@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="פשפשים לוגו">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A78BFA"/>
+      <stop offset="100%" stop-color="#5B21B6"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect width="100" height="100" rx="22" fill="url(#bg-grad)"/>
+
+  <!-- Top shine overlay -->
+  <rect width="100" height="52" rx="22" fill="url(#shine)"/>
+
+  <!-- Price-tag hole (top-left detail) -->
+  <circle cx="20" cy="20" r="5" fill="white" opacity="0.25"/>
+
+  <!-- Big sparkle (top-right) -->
+  <path d="M79 14 L81 21 L88 23 L81 25 L79 32 L77 25 L70 23 L77 21 Z"
+        fill="white" opacity="0.75"/>
+
+  <!-- Small sparkle (bottom-left) -->
+  <path d="M18 72 L19.2 76 L23 77 L19.2 78 L18 82 L16.8 78 L13 77 L16.8 76 Z"
+        fill="white" opacity="0.45"/>
+
+  <!-- Main Hebrew letter פ -->
+  <text x="52" y="77"
+        font-size="64"
+        font-family="Rubik, Arial, sans-serif"
+        font-weight="900"
+        fill="white"
+        text-anchor="middle"
+        dominant-baseline="auto">פ</text>
+</svg>

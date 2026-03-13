@@ -85,26 +85,28 @@
 <body>
 
 <!-- Navbar -->
-<nav class="navbar" role="navigation">
+<nav class="navbar" role="navigation" aria-label="ניווט ראשי">
   <div class="container">
-    <a class="navbar-logo" href="/">
-      <div class="logo-icon" aria-hidden="true">פ</div>
+    <a class="navbar-logo" href="/" aria-label="פשפשים — דף הבית">
+      <div class="logo-icon" aria-hidden="true">
+        <img src="/images/logo.svg" alt="" width="38" height="38">
+      </div>
       <span>פשפשים</span>
     </a>
     <ul class="nav-links" role="list">
-      <li><a href="/">בית</a></li>
-      <li><a href="/shop">חנות</a></li>
-      <li><a href="/shop?type=affiliate">מבצעים</a></li>
-      <li><a href="/shop?type=secondhand">יד שנייה</a></li>
+      <li><a href="/" data-i18n="nav_home">בית</a></li>
+      <li><a href="/shop" data-i18n="nav_shop">חנות</a></li>
+      <li><a href="/shop?type=affiliate" data-i18n="nav_deals">מבצעים</a></li>
+      <li><a href="/shop?type=secondhand" data-i18n="nav_secondhand">יד שנייה</a></li>
     </ul>
     <div class="nav-actions">
-      <div class="lang-switcher" role="group">
-        <button class="lang-btn" data-lang="he">עב</button>
-        <button class="lang-btn" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="ru">РУ</button>
+      <div class="lang-switcher" role="group" aria-label="בחירת שפה">
+        <button class="lang-btn" data-lang="he" aria-label="עברית">עב</button>
+        <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+        <button class="lang-btn" data-lang="ru" aria-label="Русский">РУ</button>
       </div>
-      <a href="https://wa.me/972547921821" class="btn btn-accent" target="_blank" rel="noopener">WhatsApp</a>
-      <button class="hamburger" aria-label="תפריט"><span></span><span></span><span></span></button>
+      <a href="https://wa.me/972547921821" class="btn btn-accent" target="_blank" rel="noopener" data-i18n="nav_cta">WhatsApp</a>
+      <button class="hamburger" aria-label="פתח תפריט"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
@@ -113,11 +115,11 @@
 <!-- Hero -->
 <section class="legal-hero">
   <div class="container">
-    <div class="section-tag">📄 מסמך משפטי</div>
-    <h1 class="section-title" style="margin-top:var(--space-md)">תקנון האתר</h1>
+    <div class="section-tag" data-i18n="legal_terms_badge">📄 מסמך משפטי</div>
+    <h1 class="section-title" style="margin-top:var(--space-md)" data-i18n="legal_terms_title">תקנון האתר</h1>
     <div class="legal-meta">
-      <span>📅 עדכון אחרון: מרץ 2025</span>
-      <span>🌐 פשפשים — pshpshim.vercel.app</span>
+      <span data-i18n="legal_terms_updated">📅 עדכון אחרון: מרץ 2025</span>
+      <span data-i18n="legal_terms_site">🌐 פשפשים — pshpshim.vercel.app</span>
     </div>
   </div>
 </section>
@@ -126,7 +128,7 @@
 <main class="container">
   <div class="legal-body">
 
-    <div class="legal-notice">
+    <div class="legal-notice" data-i18n="legal_terms_notice">
       ⚠️ אנא קרא/י את התקנון בעיון. השימוש באתר מהווה הסכמה לתנאים המפורטים להלן.
     </div>
 
@@ -209,10 +211,10 @@
     </p>
 
     <div class="contact-box">
-      <h3>יש לכם שאלות?</h3>
-      <p>אנחנו כאן לעזור — צרו קשר ישירות דרך WhatsApp</p>
+      <h3 data-i18n="legal_contact_q">יש לכם שאלות?</h3>
+      <p data-i18n="legal_contact_desc">אנחנו כאן לעזור — צרו קשר ישירות דרך WhatsApp</p>
       <a href="https://wa.me/972547921821" target="_blank" rel="noopener"
-         class="btn btn-accent btn-lg">
+         class="btn btn-accent btn-lg" data-i18n="legal_contact_btn">
         📲 054-792-1821
       </a>
     </div>
@@ -225,32 +227,35 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="navbar-logo"><div class="logo-icon">פ</div><span>פשפשים</span></div>
-        <p class="footer-desc">מציאות אמיתיות מ-Amazon, AliExpress ועוד — ומוצרי יד שנייה.</p>
+        <div class="navbar-logo">
+          <div class="logo-icon"><img src="/images/logo.svg" alt="" width="38" height="38"></div>
+          <span>פשפשים</span>
+        </div>
+        <p class="footer-desc" data-i18n="footer_desc">מציאות אמיתיות מ-Amazon, AliExpress ועוד — ומוצרי יד שנייה.</p>
       </div>
       <div>
-        <h3 class="footer-title">קישורים</h3>
+        <h3 class="footer-title" data-i18n="footer_links">קישורים</h3>
         <ul class="footer-links">
-          <li><a href="/">בית</a></li>
-          <li><a href="/shop">חנות</a></li>
+          <li><a href="/" data-i18n="nav_home">בית</a></li>
+          <li><a href="/shop" data-i18n="nav_shop">חנות</a></li>
         </ul>
       </div>
       <div>
-        <h3 class="footer-title">משפטי</h3>
+        <h3 class="footer-title" data-i18n="footer_legal">משפטי</h3>
         <ul class="footer-links">
-          <li><a href="/terms">תקנון</a></li>
-          <li><a href="/privacy">מדיניות פרטיות</a></li>
+          <li><a href="/terms" data-i18n="footer_terms">תקנון</a></li>
+          <li><a href="/privacy" data-i18n="footer_privacy">מדיניות פרטיות</a></li>
         </ul>
       </div>
       <div>
-        <h3 class="footer-title">צור קשר</h3>
+        <h3 class="footer-title" data-i18n="footer_contact_title">צור קשר</h3>
         <ul class="footer-links">
           <li><a href="https://wa.me/972547921821" target="_blank" dir="ltr">054-792-1821</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 פשפשים. כל הזכויות שמורות.</p>
+      <p data-i18n="footer_rights">© 2025 פשפשים. כל הזכויות שמורות.</p>
       <p class="footer-credit"><a href="https://slavx.site" target="_blank">SLAVX.SITE</a></p>
     </div>
   </div>
@@ -259,5 +264,6 @@
 <script src="js/i18n.js"></script>
 <script src="js/script.js"></script>
 <script src="js/accessibility.js"></script>
+<script src="js/cookies.js"></script>
 </body>
 </html>

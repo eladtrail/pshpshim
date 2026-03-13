@@ -153,6 +153,33 @@ const TRANSLATIONS = {
     prod_cta_bottom_sub_sh: 'שלח הודעה ב-WhatsApp לפרטים נוספים',
     prod_buy_link: '👉 לקנייה ב-',
     prod_wa_contact: '📲 WhatsApp',
+
+    /* Footer */
+    footer_legal: 'משפטי',
+    footer_terms: 'תקנון',
+    footer_privacy: 'מדיניות פרטיות',
+
+    /* Legal pages */
+    legal_terms_badge: '📄 מסמך משפטי',
+    legal_terms_title: 'תקנון האתר',
+    legal_terms_updated: '📅 עדכון אחרון: מרץ 2025',
+    legal_terms_site: '🌐 פשפשים — pshpshim.vercel.app',
+    legal_terms_notice: '⚠️ אנא קרא/י את התקנון בעיון. השימוש באתר מהווה הסכמה לתנאים המפורטים להלן.',
+    legal_privacy_badge: '🔒 מדיניות פרטיות',
+    legal_privacy_title: 'מדיניות פרטיות',
+    legal_privacy_updated: '📅 עדכון אחרון: מרץ 2025',
+    legal_privacy_site: '🌐 פשפשים — pshpshim.vercel.app',
+    legal_privacy_notice: '🛡️ פשפשים מכבדת את פרטיותך. מדיניות זו מפרטת כיצד אנו מטפלים במידע של המשתמשים, בהתאם לחוק הגנת הפרטיות ורגולציית GDPR.',
+    legal_contact_q: 'יש לכם שאלות?',
+    legal_contact_desc: 'אנחנו כאן לעזור — צרו קשר ישירות דרך WhatsApp',
+    legal_contact_btn: '📲 054-792-1821',
+    legal_privacy_q: '🔒 שאלות על פרטיות?',
+    legal_privacy_resp: 'נחזור אליך תוך 48 שעות בימי עסקים',
+
+    /* Cookie consent */
+    cookie_msg: '🍪 האתר שומר העדפות שפה ונגישות ב-localStorage בלבד (ללא cookies אמיתיים).',
+    cookie_accept: 'הבנתי ✓',
+    cookie_link: 'מדיניות פרטיות',
   },
 
   en: {
@@ -295,6 +322,33 @@ const TRANSLATIONS = {
     prod_cta_bottom_sub_sh: 'Send a WhatsApp message for more details',
     prod_buy_link: '👉 Buy on ',
     prod_wa_contact: '📲 WhatsApp',
+
+    /* Footer */
+    footer_legal: 'Legal',
+    footer_terms: 'Terms',
+    footer_privacy: 'Privacy Policy',
+
+    /* Legal pages */
+    legal_terms_badge: '📄 Legal Document',
+    legal_terms_title: 'Terms of Service',
+    legal_terms_updated: '📅 Last updated: March 2025',
+    legal_terms_site: '🌐 פשפשים — pshpshim.vercel.app',
+    legal_terms_notice: '⚠️ Please read these terms carefully. Using this site constitutes acceptance of all terms listed below.',
+    legal_privacy_badge: '🔒 Privacy Policy',
+    legal_privacy_title: 'Privacy Policy',
+    legal_privacy_updated: '📅 Last updated: March 2025',
+    legal_privacy_site: '🌐 פשפשים — pshpshim.vercel.app',
+    legal_privacy_notice: '🛡️ פשפשים respects your privacy. This policy details how we handle user information per Israeli Privacy Law and GDPR.',
+    legal_contact_q: 'Have Questions?',
+    legal_contact_desc: "We're here to help — contact us directly via WhatsApp",
+    legal_contact_btn: '📲 054-792-1821',
+    legal_privacy_q: '🔒 Privacy Questions?',
+    legal_privacy_resp: "We'll respond within 48 business hours",
+
+    /* Cookie consent */
+    cookie_msg: '🍪 This site saves language and accessibility preferences in your browser\'s localStorage only (no real cookies).',
+    cookie_accept: 'Got it ✓',
+    cookie_link: 'Privacy Policy',
   },
 
   ru: {
@@ -437,6 +491,33 @@ const TRANSLATIONS = {
     prod_cta_bottom_sub_sh: 'Напишите в WhatsApp для получения деталей',
     prod_buy_link: '👉 Купить на ',
     prod_wa_contact: '📲 WhatsApp',
+
+    /* Footer */
+    footer_legal: 'Юридическое',
+    footer_terms: 'Условия',
+    footer_privacy: 'Политика конфиденциальности',
+
+    /* Legal pages */
+    legal_terms_badge: '📄 Юридический документ',
+    legal_terms_title: 'Условия использования',
+    legal_terms_updated: '📅 Последнее обновление: март 2025',
+    legal_terms_site: '🌐 פשפשים — pshpshim.vercel.app',
+    legal_terms_notice: '⚠️ Пожалуйста, внимательно прочитайте эти условия. Использование сайта означает принятие всех перечисленных условий.',
+    legal_privacy_badge: '🔒 Политика конфиденциальности',
+    legal_privacy_title: 'Политика конфиденциальности',
+    legal_privacy_updated: '📅 Последнее обновление: март 2025',
+    legal_privacy_site: '🌐 פשפשים — pshpshim.vercel.app',
+    legal_privacy_notice: '🛡️ פשפשים уважает вашу конфиденциальность. Эта политика описывает, как мы обрабатываем данные пользователей в соответствии с законом о конфиденциальности и GDPR.',
+    legal_contact_q: 'Есть вопросы?',
+    legal_contact_desc: 'Мы здесь, чтобы помочь — свяжитесь с нами через WhatsApp',
+    legal_contact_btn: '📲 054-792-1821',
+    legal_privacy_q: '🔒 Вопросы о конфиденциальности?',
+    legal_privacy_resp: 'Ответим в течение 48 рабочих часов',
+
+    /* Cookie consent */
+    cookie_msg: '🍪 Сайт сохраняет языковые и настройки доступности только в localStorage браузера (без реальных cookies).',
+    cookie_accept: 'Понятно ✓',
+    cookie_link: 'Конфиденциальность',
   }
 };
 
@@ -444,7 +525,7 @@ const TRANSLATIONS = {
 let currentLang = localStorage.getItem('pshpsh_lang') || 'he';
 
 function t(key) {
-  return TRANSLATIONS[currentLang][key] || TRANSLATIONS['he'][key] || key;
+  return TRANSLATIONS[currentLang][key] ?? TRANSLATIONS['he'][key] ?? key;
 }
 
 function setLang(lang) {
