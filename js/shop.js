@@ -283,9 +283,13 @@ function renderProducts() {
   empty?.classList.add('hidden');
   grid.innerHTML = filteredProducts.map(renderProductCard).join('');
 
-  // Re-observe new cards for reveal animation
+  // observe new cards — fallback: make visible immediately
   grid.querySelectorAll('.reveal').forEach(el => {
-    revealObserver?.observe(el);
+    if (typeof revealObserver !== 'undefined' && revealObserver) {
+      revealObserver.observe(el);
+    } else {
+      el.classList.add('visible');
+    }
   });
 }
 
@@ -316,7 +320,13 @@ function renderFeatured(type, containerId, limit = 4) {
   const list = allProducts.filter(p => p.type === type).slice(0, limit);
   if (!list.length) { container.closest('section')?.classList.add('hidden'); return; }
   container.innerHTML = list.map(renderProductCard).join('');
-  container.querySelectorAll('.reveal').forEach(el => revealObserver?.observe(el));
+  container.querySelectorAll('.reveal').forEach(el => {
+    if (typeof revealObserver !== 'undefined' && revealObserver) {
+      revealObserver.observe(el);
+    } else {
+      el.classList.add('visible');
+    }
+  });
 }
 
 /* ── Shop page controls ── */
@@ -381,12 +391,4 @@ document.addEventListener('langchange', () => {
   }
 });
 
-// expose for inline reveal observer access
-let revealObserver;
-document.addEventListener('DOMContentLoaded', () => {
-  revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-});
+// revealObserver is defined in script.js (shared global)
