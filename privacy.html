@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7C3AED">
+  <title>מדיניות פרטיות | פשפשים</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237C3AED'/><text y='.9em' font-size='75' x='12' font-family='Rubik,sans-serif' font-weight='900' fill='white'>פ</text></svg>">
+  <style>
+    .legal-hero {
+      padding-top: calc(var(--navbar-h) + var(--space-3xl));
+      padding-bottom: var(--space-2xl);
+      background: linear-gradient(135deg, #FAF9FF 0%, #F3F0FF 100%);
+    }
+    .legal-body {
+      max-width: 800px;
+      margin-inline: auto;
+      padding-block: var(--space-3xl);
+    }
+    .legal-body h2 {
+      font-size: var(--text-2xl);
+      font-weight: 800;
+      color: var(--primary);
+      margin-top: var(--space-3xl);
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-sm);
+      border-bottom: 2px solid var(--primary-bg);
+    }
+    .legal-body h2:first-of-type { margin-top: var(--space-xl); }
+    .legal-body p {
+      font-size: var(--text-base);
+      color: var(--text-muted);
+      line-height: 1.85;
+      margin-bottom: var(--space-md);
+    }
+    .legal-body ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: var(--space-md);
+    }
+    .legal-body ul li {
+      padding: var(--space-xs) 0;
+      padding-inline-start: var(--space-lg);
+      color: var(--text-muted);
+      line-height: 1.7;
+      position: relative;
+      font-size: var(--text-base);
+    }
+    .legal-body ul li::before {
+      content: '◆';
+      position: absolute;
+      inset-inline-start: 0;
+      color: var(--primary);
+      font-size: 0.6em;
+      top: 0.45em;
+    }
+    .legal-meta {
+      display: flex; gap: var(--space-lg); flex-wrap: wrap;
+      margin-top: var(--space-md);
+      font-size: var(--text-sm); color: var(--text-muted);
+    }
+    .legal-notice {
+      background: var(--primary-bg);
+      border: 1px solid var(--primary);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      margin-bottom: var(--space-2xl);
+      font-size: var(--text-sm);
+      color: var(--primary-dk);
+      font-weight: 600;
+    }
+    .rights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--space-md);
+      margin-bottom: var(--space-xl);
+    }
+    .right-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      text-align: center;
+    }
+    .right-card .icon { font-size: 2rem; margin-bottom: var(--space-sm); }
+    .right-card h4 { font-size: var(--text-sm); font-weight: 700; color: var(--text); margin-bottom: var(--space-xs); }
+    .right-card p { font-size: var(--text-xs); color: var(--text-muted); margin: 0; line-height: 1.5; }
+    .contact-box {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dk));
+      border-radius: var(--radius-xl);
+      padding: var(--space-2xl);
+      text-align: center;
+      color: #fff;
+      margin-top: var(--space-3xl);
+    }
+    .contact-box h3 { font-size: var(--text-2xl); margin-bottom: var(--space-md); }
+    .contact-box p { opacity: .8; margin-bottom: var(--space-lg); }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar" role="navigation">
+  <div class="container">
+    <a class="navbar-logo" href="/">
+      <div class="logo-icon" aria-hidden="true">פ</div>
+      <span>פשפשים</span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="/">בית</a></li>
+      <li><a href="/shop">חנות</a></li>
+      <li><a href="/shop?type=affiliate">מבצעים</a></li>
+      <li><a href="/shop?type=secondhand">יד שנייה</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="lang-switcher" role="group">
+        <button class="lang-btn" data-lang="he">עב</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">РУ</button>
+      </div>
+      <a href="https://wa.me/972547921821" class="btn btn-accent" target="_blank" rel="noopener">WhatsApp</a>
+      <button class="hamburger" aria-label="תפריט"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-overlay"></div>
+
+<!-- Hero -->
+<section class="legal-hero">
+  <div class="container">
+    <div class="section-tag">🔒 מסמך משפטי</div>
+    <h1 class="section-title" style="margin-top:var(--space-md)">מדיניות פרטיות</h1>
+    <div class="legal-meta">
+      <span>📅 עדכון אחרון: מרץ 2025</span>
+      <span>🌐 פשפשים — pshpshim.vercel.app</span>
+    </div>
+  </div>
+</section>
+
+<!-- Content -->
+<main class="container">
+  <div class="legal-body">
+
+    <div class="legal-notice">
+      🛡️ פשפשים מכבדת את פרטיותך. מדיניות זו מפרטת כיצד אנו מטפלים במידע של המשתמשים,
+      בהתאם לחוק הגנת הפרטיות, תשמ"א-1981 ותיקוניו, ולרגולציית GDPR האירופאית.
+    </div>
+
+    <h2>1. מי אנחנו</h2>
+    <p>
+      פשפשים הוא אתר אפיליאייט ומוצרי יד שנייה המופעל ומנוהל על ידי מפעיל פרטי בישראל.
+      אנחנו לא חברה רשומה ולא נאסף מידע אישי שלך ללא ידיעתך.
+    </p>
+
+    <h2>2. אילו נתונים אנחנו (לא) אוספים</h2>
+    <p>
+      האתר <strong>אינו</strong> אוסף ישירות נתונים אישיים של המשתמשים. לא קיימת מערכת הרשמה,
+      לא קיים מסד נתונים של לקוחות, ולא נשמר מידע אישי שלך בשרתי האתר.
+    </p>
+    <p>המידע היחיד שמגיע אלינו הוא:</p>
+    <ul>
+      <li>הודעות WhatsApp שאתה שולח מרצונך ביצירת קשר בנוגע למוצרים.</li>
+      <li>נתונים סטטיסטיים אנונימיים (עמוד שנצפה, זמן שהייה) — אם נשתמש בעתיד בכלי אנליטיקה.</li>
+    </ul>
+
+    <h2>3. שירותי צד שלישי</h2>
+    <p>
+      האתר משתמש בשירותים חיצוניים שיש להם מדיניות פרטיות משלהם:
+    </p>
+    <ul>
+      <li>
+        <strong>Vercel</strong> — פלטפורמת האחסון של האתר. עלולה לאסוף כתובות IP ונתוני גלישה בסיסיים.
+        <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener" style="color:var(--primary);">מדיניות פרטיות של Vercel</a>
+      </li>
+      <li>
+        <strong>Google Fonts</strong> — גופנים המוצגים באתר. Google עשויה לאסוף נתונים בסיסיים.
+      </li>
+      <li>
+        <strong>Amazon / AliExpress / eBay</strong> — בעת לחיצה על קישורי אפיליאייט, אתה מועבר לאתרים אלו
+        שיש להם מדיניות פרטיות נפרדת ועצמאית.
+      </li>
+      <li>
+        <strong>WhatsApp (Meta)</strong> — תקשורת ישירה. בשימוש ב-WhatsApp אתה כפוף לתנאי השירות של Meta.
+      </li>
+      <li>
+        <strong>Unsplash / Cloudinary</strong> — תמונות מוצרים. אין אחסון נתונים אישיים.
+      </li>
+    </ul>
+
+    <h2>4. Cookies וטכנולוגיות מעקב</h2>
+    <p>
+      האתר משתמש ב-<strong>localStorage</strong> בלבד (לא cookies) לצורך שמירת העדפות המשתמש בדפדפן:
+    </p>
+    <ul>
+      <li><code>pshpsh_lang</code> — שפת הממשק שנבחרה (עברית/אנגלית/רוסית)</li>
+      <li><code>pshpsh_a11y</code> — הגדרות הנגישות (גודל טקסט, ניגודיות וכו')</li>
+    </ul>
+    <p>
+      נתונים אלה נשמרים <strong>מקומית בדפדפן שלך בלבד</strong> ולא מועברים לשרת כלשהו.
+      ניתן לנקות אותם בכל עת מהגדרות הדפדפן.
+    </p>
+
+    <h2>5. זכויותיך</h2>
+    <p>כמשתמש, יש לך את הזכויות הבאות:</p>
+    <div class="rights-grid">
+      <div class="right-card">
+        <div class="icon">📋</div>
+        <h4>זכות לידע</h4>
+        <p>לדעת אילו נתונים נאספים עליך</p>
+      </div>
+      <div class="right-card">
+        <div class="icon">✏️</div>
+        <h4>זכות לתיקון</h4>
+        <p>לבקש תיקון מידע שגוי</p>
+      </div>
+      <div class="right-card">
+        <div class="icon">🗑️</div>
+        <h4>זכות למחיקה</h4>
+        <p>לבקש מחיקת כל מידע שנמסר</p>
+      </div>
+      <div class="right-card">
+        <div class="icon">🚫</div>
+        <h4>זכות להתנגד</h4>
+        <p>להתנגד לעיבוד מידע אישי</p>
+      </div>
+    </div>
+    <p>
+      למימוש זכויותיך, ניתן לפנות אלינו ישירות ב-WhatsApp. נטפל בבקשתך תוך 30 יום.
+    </p>
+
+    <h2>6. אבטחת מידע</h2>
+    <p>
+      פשפשים הוא אתר סטטי ללא מסד נתונים. לא נשמר אצלנו שום מידע אישי — לכן גם לא קיים
+      סיכון של דליפת מידע מהאתר עצמו. תקשורת ה-WhatsApp מוצפנת מקצה לקצה על ידי Meta.
+    </p>
+
+    <h2>7. ילדים</h2>
+    <p>
+      האתר לא מיועד לילדים מתחת לגיל 13. אנחנו לא אוספים ביודעין מידע על ילדים.
+    </p>
+
+    <h2>8. שינויים במדיניות</h2>
+    <p>
+      אנחנו עשויים לעדכן מדיניות זו מעת לעת. שינויים מהותיים יפורסמו בראש העמוד עם תאריך עדכון.
+      המשך השימוש באתר לאחר השינויים מהווה הסכמה לתנאים המעודכנים.
+    </p>
+
+    <h2>9. יצירת קשר בנוגע לפרטיות</h2>
+    <p>
+      לכל שאלה, בקשה או תלונה בנוגע לפרטיות, ניתן לפנות אלינו ב-WhatsApp:
+    </p>
+
+    <div class="contact-box">
+      <h3>🔒 שאלות על פרטיות?</h3>
+      <p>נחזור אליך תוך 48 שעות בימי עסקים</p>
+      <a href="https://wa.me/972547921821?text=%D7%A9%D7%9C%D7%95%D7%9D%2C+%D7%99%D7%A9+%D7%9C%D7%99+%D7%A9%D7%90%D7%9C%D7%94+%D7%91%D7%A0%D7%95%D7%92%D7%A2+%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%95%D7%AA"
+         target="_blank" rel="noopener" class="btn btn-accent btn-lg">
+        📲 054-792-1821
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="navbar-logo"><div class="logo-icon">פ</div><span>פשפשים</span></div>
+        <p class="footer-desc">מציאות אמיתיות מ-Amazon, AliExpress ועוד — ומוצרי יד שנייה.</p>
+      </div>
+      <div>
+        <h3 class="footer-title">קישורים</h3>
+        <ul class="footer-links">
+          <li><a href="/">בית</a></li>
+          <li><a href="/shop">חנות</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title">משפטי</h3>
+        <ul class="footer-links">
+          <li><a href="/terms">תקנון</a></li>
+          <li><a href="/privacy">מדיניות פרטיות</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title">צור קשר</h3>
+        <ul class="footer-links">
+          <li><a href="https://wa.me/972547921821" target="_blank" dir="ltr">054-792-1821</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 פשפשים. כל הזכויות שמורות.</p>
+      <p class="footer-credit"><a href="https://slavx.site" target="_blank">SLAVX.SITE</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/i18n.js"></script>
+<script src="js/script.js"></script>
+<script src="js/accessibility.js"></script>
+</body>
+</html>
