@@ -319,40 +319,53 @@ function renderProductPage(p, allProds) {
   const isAffiliate = p.type === 'affiliate';
   const discount = p.original_price
     ? Math.round((1 - +p.price / +p.original_price) * 100) : 0;
-
-  /* Set page title & meta */
-  document.title = `${name} | פשפשים`;
-
-  /* Platform badge class */
   const platClass = (p.platform || '').toLowerCase();
   const platName  = getPlatformName(p.platform);
+
+  /* Set page title */
+  document.title = `${name} | פשפשים`;
+
+  /* Shipping label — depends on platform */
+  const shipLabel = platClass === 'amazon'
+    ? t('prod_trust_ship_amazon')
+    : platClass === 'aliexpress'
+      ? t('prod_trust_ship_aliexpress')
+      : t('prod_trust_ship_default');
+
+  /* Why-bullet shipping note */
+  const why4 = platClass === 'amazon'
+    ? t('prod_why_4_amazon')
+    : platClass === 'aliexpress'
+      ? t('prod_why_4_aliexpress')
+      : t('prod_why_4_default');
 
   /* Price HTML */
   const priceHTML = p.original_price
     ? `<span class="price-big">₪${(+p.price).toLocaleString()}</span>
        <span class="price-was">₪${(+p.original_price).toLocaleString()}</span>
-       <span class="price-save">חיסכון ${discount}%</span>`
+       <span class="price-save">${t('prod_saving_label')} ${discount}%</span>`
     : `<span class="price-big">₪${(+p.price).toLocaleString()}</span>`;
 
   /* CTA button */
+  const waIconSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.135.563 4.14 1.538 5.875L0 24l6.304-1.516A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.933 0-3.742-.522-5.292-1.432L2 22l1.448-4.572A9.963 9.963 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>`;
+
   const ctaBtn = isAffiliate
     ? `<a href="${p.link}" target="_blank" rel="nofollow sponsored noopener"
           class="btn-main-buy affiliate" id="mainCta">
-         🛒 קנה עכשיו ב-${platName}
+         🛒 ${t('prod_buy_at')}${platName}
        </a>`
     : `<button onclick="waContact()" class="btn-main-buy whatsapp" id="mainCta">
-         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.135.563 4.14 1.538 5.875L0 24l6.304-1.516A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.933 0-3.742-.522-5.292-1.432L2 22l1.448-4.572A9.963 9.963 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-         צור קשר ב-WhatsApp
+         ${waIconSvg} ${t('prod_contact_wa')}
        </button>`;
 
-  /* Related products (same category, not this one) */
+  /* Related products */
   const related = allProds.filter(x => x.category === p.category && x.id !== p.id).slice(0, 4);
   const relatedHTML = related.length ? `
     <section class="desc-section alt">
       <div class="container">
         <div class="section-header reveal">
-          <span class="section-tag">✨ קשורים</span>
-          <h2 class="section-title">מוצרים דומים</h2>
+          <span class="section-tag">${t('prod_section_related_tag')}</span>
+          <h2 class="section-title">${t('prod_section_related_title')}</h2>
         </div>
         <div class="related-grid stagger-children">
           ${related.map(r => {
@@ -365,11 +378,11 @@ function renderProductPage(p, allProds) {
                 <div class="card-type-indicator ${r.type}">${r.type==='affiliate'?'🔗':'♻️'}</div>
               </div>
               <div class="card-body">
-                <p class="card-category">${CAT_ICONS[r.category]||''} ${r.category}</p>
+                <p class="card-category">${CAT_ICONS[r.category]||''} ${t('cat_'+r.category)||r.category}</p>
                 <h3 class="card-title">${rName}</h3>
                 <div class="card-footer">
                   <div class="card-price"><span class="price-current">₪${(+r.price).toLocaleString()}</span></div>
-                  <span class="btn btn-ghost" style="font-size:var(--text-sm);">צפה</span>
+                  <span class="btn btn-ghost" style="font-size:var(--text-sm);">${t('prod_related_view')}</span>
                 </div>
               </div>
             </a>`;
@@ -380,15 +393,15 @@ function renderProductPage(p, allProds) {
 
   /* Condition badge (secondhand) */
   const conditionHTML = p.condition
-    ? `<div class="condition-pill">♻️ מצב: ${p.condition}</div>` : '';
+    ? `<div class="condition-pill">♻️ ${p.condition}</div>` : '';
 
   /* Platform badge */
   const platBadgeHTML = isAffiliate && platClass
     ? `<div class="img-badge ${platClass}">${platName}</div>` : '';
 
-  const badgeHTML = p.badge === 'hot'  ? `<div class="img-badge hot">🔥 חם</div>`
-                  : p.badge === 'sale' ? `<div class="img-badge sale">🏷️ מבצע</div>`
-                  : p.badge === 'new'  ? `<div class="img-badge" style="background:var(--success);color:#fff">✨ חדש</div>`
+  const badgeHTML = p.badge === 'hot'  ? `<div class="img-badge hot">${t('badge_hot')}</div>`
+                  : p.badge === 'sale' ? `<div class="img-badge sale">${t('badge_sale')}</div>`
+                  : p.badge === 'new'  ? `<div class="img-badge" style="background:var(--success);color:#fff">✨ ${t('badge_new')}</div>`
                   : '';
 
   const catLabel = t('cat_' + p.category) || p.category;
@@ -400,8 +413,8 @@ function renderProductPage(p, allProds) {
     <section class="product-hero">
       <div class="container">
         <nav class="breadcrumb">
-          <a href="/">בית</a><span>›</span>
-          <a href="/shop">חנות</a><span>›</span>
+          <a href="/">${t('nav_home')}</a><span>›</span>
+          <a href="/shop">${t('nav_shop')}</a><span>›</span>
           <a href="/shop?cat=${p.category}">${catIcon} ${catLabel}</a><span>›</span>
           <span>${name}</span>
         </nav>
@@ -424,7 +437,7 @@ function renderProductPage(p, allProds) {
                    onclick="switchThumb(this, '${p.image}')">
             </div>
             <p style="font-size:var(--text-xs);color:var(--text-light);text-align:center;">
-              לחץ על התמונה להגדלה
+              ${t('prod_zoom')}
             </p>
           </div>
 
@@ -439,23 +452,23 @@ function renderProductPage(p, allProds) {
             <p class="product-desc-lead">${desc}</p>
 
             <div class="cta-box">
-              <p class="cta-sub">${isAffiliate ? '⚡ מחיר מבצע — לחץ לראות מחיר עדכני' : '📞 ליצור קשר לפרטים ומסירה'}</p>
+              <p class="cta-sub">${isAffiliate ? t('prod_cta_sub_affiliate') : t('prod_cta_sub_secondhand')}</p>
               ${ctaBtn}
               ${isAffiliate ? `
               <div class="cta-trust">
-                <span>🔒 תשלום מאובטח</span>
-                <span>📦 משלוח בינלאומי</span>
-                <span>↩️ החזר קל</span>
+                <span>${t('prod_trust_secure')}</span>
+                <span>${shipLabel}</span>
+                <span>${t('prod_trust_return')}</span>
               </div>` : `
               <div class="cta-trust">
-                <span>💬 תגובה מהירה</span>
-                <span>🤝 מסירה נוחה</span>
-                <span>✅ מחיר הוגן</span>
+                <span>${t('prod_trust_response')}</span>
+                <span>${t('prod_trust_pickup')}</span>
+                <span>${t('prod_trust_fair')}</span>
               </div>`}
             </div>
 
             <a href="/shop?cat=${p.category}" class="btn btn-ghost" style="width:fit-content;">
-              ← חזרה לקטגוריה
+              ${t('prod_back_cat')}
             </a>
           </div>
         </div>
@@ -466,26 +479,26 @@ function renderProductPage(p, allProds) {
     <section class="desc-section">
       <div class="container">
         <div class="section-header reveal">
-          <span class="section-tag">📋 תיאור המוצר</span>
-          <h2 class="section-title">פרטים מלאים</h2>
+          <span class="section-tag">${t('prod_section_desc')}</span>
+          <h2 class="section-title">${t('prod_section_desc_title')}</h2>
         </div>
         <div class="desc-body reveal">
           <p>${desc}</p>
-          ${p.type === 'affiliate' ? `
-          <h3>למה לקנות דרכנו?</h3>
+          ${isAffiliate ? `
+          <h3>${t('prod_why_title')}</h3>
           <ul>
-            <li>מצאנו את המחיר הטוב ביותר עבורך</li>
-            <li>קישור ישיר לאתר הרשמי — ${platName}</li>
-            <li>תשלום מאובטח ומוגן</li>
-            <li>משלוח עד הבית</li>
-            <li>אחריות ומדיניות החזרה של הפלטפורמה</li>
+            <li>${t('prod_why_1')}</li>
+            <li>${t('prod_why_2')} — ${platName}</li>
+            <li>${t('prod_why_3')}</li>
+            <li>${why4}</li>
+            <li>${t('prod_why_5')}</li>
           </ul>` : `
-          <h3>פרטי המוצר</h3>
+          <h3>${t('prod_details_title')}</h3>
           <ul>
-            <li>מצב: ${p.condition || 'ראה תיאור'}</li>
-            <li>מחיר: ₪${(+p.price).toLocaleString()} — ניתן למשא ומתן</li>
-            <li>מסירה: בתיאום אישי</li>
-            <li>תשלום: מזומן / Bit / PayBox</li>
+            <li>${t('prod_detail_cond')} ${p.condition || t('prod_detail_cond_default')}</li>
+            <li>${t('prod_detail_price')} ₪${(+p.price).toLocaleString()} — ${t('prod_detail_negotiate')}</li>
+            <li>${t('prod_detail_delivery')}</li>
+            <li>${t('prod_detail_payment')}</li>
           </ul>`}
         </div>
       </div>
@@ -495,20 +508,20 @@ function renderProductPage(p, allProds) {
     <section class="desc-section alt">
       <div class="container" style="max-width:720px;">
         <div class="section-header reveal">
-          <span class="section-tag">📊 מפרט</span>
-          <h2 class="section-title">מפרט מוצר</h2>
+          <span class="section-tag">${t('prod_section_specs')}</span>
+          <h2 class="section-title">${t('prod_section_specs_title')}</h2>
         </div>
         <table class="specs-table reveal">
           <tbody>
-            <tr class="specs-head"><td>פרט</td><td>מידע</td></tr>
-            <tr><td>שם</td><td>${name}</td></tr>
-            <tr><td>קטגוריה</td><td>${catIcon} ${catLabel}</td></tr>
-            <tr><td>מחיר</td><td>₪${(+p.price).toLocaleString()}</td></tr>
-            ${p.original_price ? `<tr><td>מחיר מקורי</td><td>₪${(+p.original_price).toLocaleString()}</td></tr>` : ''}
-            ${discount ? `<tr><td>חיסכון</td><td><span style="color:var(--success-dk);font-weight:700;">${discount}%</span></td></tr>` : ''}
-            ${isAffiliate ? `<tr><td>פלטפורמה</td><td>${platName}</td></tr>` : ''}
-            ${p.condition ? `<tr><td>מצב</td><td>${p.condition}</td></tr>` : ''}
-            <tr><td>סוג</td><td>${isAffiliate ? '🔗 אפיליאייט' : '♻️ יד שנייה'}</td></tr>
+            <tr class="specs-head"><td>${t('prod_spec_key')}</td><td>${t('prod_spec_val')}</td></tr>
+            <tr><td>${t('prod_spec_name')}</td><td>${name}</td></tr>
+            <tr><td>${t('prod_spec_category')}</td><td>${catIcon} ${catLabel}</td></tr>
+            <tr><td>${t('prod_spec_price')}</td><td>₪${(+p.price).toLocaleString()}</td></tr>
+            ${p.original_price ? `<tr><td>${t('prod_spec_original')}</td><td>₪${(+p.original_price).toLocaleString()}</td></tr>` : ''}
+            ${discount ? `<tr><td>${t('prod_spec_saving')}</td><td><span style="color:var(--success-dk);font-weight:700;">${discount}%</span></td></tr>` : ''}
+            ${isAffiliate ? `<tr><td>${t('prod_spec_platform')}</td><td>${platName}</td></tr>` : ''}
+            ${p.condition ? `<tr><td>${t('prod_spec_condition')}</td><td>${p.condition}</td></tr>` : ''}
+            <tr><td>${t('prod_spec_type')}</td><td>${isAffiliate ? t('prod_type_affiliate') : t('prod_type_secondhand')}</td></tr>
           </tbody>
         </table>
       </div>
@@ -521,19 +534,19 @@ function renderProductPage(p, allProds) {
     <section style="background:linear-gradient(135deg,var(--text),#312E81);padding-block:var(--space-3xl);text-align:center;">
       <div class="container reveal">
         <h2 style="color:#fff;font-size:clamp(var(--text-2xl),4vw,var(--text-3xl));margin-bottom:var(--space-md);">
-          ${isAffiliate ? '⚡ קנה עכשיו במחיר מבצע' : '💬 מעוניין? צור קשר'}
+          ${isAffiliate ? t('prod_cta_bottom_affiliate') : t('prod_cta_bottom_secondhand')}
         </h2>
         <p style="color:rgba(255,255,255,.7);margin-bottom:var(--space-xl);">
-          ${isAffiliate ? 'לחץ לראות את המחיר העדכני ב-' + platName : 'שלח הודעה ב-WhatsApp לפרטים נוספים'}
+          ${isAffiliate ? t('prod_cta_bottom_sub_aff') + platName : t('prod_cta_bottom_sub_sh')}
         </p>
         <div style="display:flex;gap:var(--space-md);justify-content:center;flex-wrap:wrap;">
           ${isAffiliate
             ? `<a href="${p.link}" target="_blank" rel="nofollow sponsored noopener" class="btn btn-accent btn-lg">
-                 👉 לקנייה ב-${platName}
+                 ${t('prod_buy_link')}${platName}
                </a>`
-            : `<button onclick="waContact()" class="btn btn-whatsapp btn-lg">📲 WhatsApp</button>`}
+            : `<button onclick="waContact()" class="btn btn-whatsapp btn-lg">${t('prod_wa_contact')}</button>`}
           <a href="/shop" class="btn btn-ghost btn-lg" style="color:#fff;border-color:rgba(255,255,255,.3);">
-            חזרה לחנות
+            ${t('prod_back_shop')}
           </a>
         </div>
       </div>
@@ -543,7 +556,7 @@ function renderProductPage(p, allProds) {
   const buyBar = document.getElementById('buyBar');
   buyBar.style.display = 'flex';
   document.getElementById('buyBarName').textContent = name;
-  document.getElementById('buyBarSub').textContent = `₪${(+p.price).toLocaleString()}${isAffiliate?' · '+platName:' · יד שנייה'}`;
+  document.getElementById('buyBarSub').textContent = `₪${(+p.price).toLocaleString()} · ${isAffiliate ? platName : t('prod_type_secondhand')}`;
   const barBtn = document.getElementById('buyBarBtn');
   if (isAffiliate) {
     barBtn.onclick = () => window.open(p.link, '_blank');
