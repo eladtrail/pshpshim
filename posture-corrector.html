@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#7C3AED">
   <meta property="og:title" content="מתקן יציבה חכם – Smart Posture Corrector | פשפשים">
   <meta property="og:description" content="שמרו על גב ישר בכל מקום. מחיר מבצע ב-AliExpress.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80">
+  <meta property="og:image" content="https://ae01.alicdn.com/kf/Scd2353bf280946c998f929237ecb9bb11.jpg">
   <title>מתקן יציבה חכם | פשפשים</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237C3AED'/><text y='.9em' font-size='75' x='12' font-family='Rubik,sans-serif' font-weight='900' fill='white'>פ</text></svg>">
@@ -27,7 +27,7 @@
     }
 
     /* Product gallery */
-    .product-gallery { position: relative; }
+    .product-gallery { position: relative; display: flex; flex-direction: column; gap: var(--space-md); }
 
     .product-main-img {
       width: 100%;
@@ -35,6 +35,32 @@
       object-fit: cover;
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow-xl);
+      transition: opacity 0.3s ease;
+    }
+
+    .product-thumbs {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+
+    .thumb {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--border);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+
+    .thumb:hover, .thumb.active {
+      border-color: var(--primary);
+      opacity: 1;
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(124,58,237,.25);
     }
 
     .product-badge-hero {
@@ -459,18 +485,30 @@
 
     <div class="product-hero-grid">
 
-      <!-- Image -->
+      <!-- Image Gallery -->
       <div class="product-gallery reveal">
-        <img
-          class="product-main-img"
-          src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=85"
-          alt="מתקן יציבה חכם Smart Posture Corrector"
-          loading="eager"
-        >
-        <div class="product-badge-hero">
-          <div class="badge-hero-item platform">AliExpress</div>
-          <div class="badge-hero-item">🔥 מבצע חם</div>
-          <div class="badge-hero-item">✅ משלוח בינלאומי</div>
+        <div style="position:relative;">
+          <img
+            id="mainProductImg"
+            class="product-main-img"
+            src="https://ae01.alicdn.com/kf/Scd2353bf280946c998f929237ecb9bb11.jpg"
+            alt="מתקן יציבה חכם Smart Posture Corrector"
+            loading="eager"
+          >
+          <div class="product-badge-hero">
+            <div class="badge-hero-item platform">AliExpress</div>
+            <div class="badge-hero-item">🔥 מבצע חם</div>
+            <div class="badge-hero-item">✅ משלוח בינלאומי</div>
+          </div>
+        </div>
+        <!-- Thumbnails -->
+        <div class="product-thumbs" role="list" aria-label="תמונות מוצר">
+          <img class="thumb active" src="https://ae01.alicdn.com/kf/Scd2353bf280946c998f929237ecb9bb11.jpg"  alt="תמונה 1" onclick="switchImg(this)" role="button" tabindex="0">
+          <img class="thumb"        src="https://ae01.alicdn.com/kf/S842681b272bd455b98dd4281187bcc3d2.jpg" alt="תמונה 2" onclick="switchImg(this)" role="button" tabindex="0">
+          <img class="thumb"        src="https://ae01.alicdn.com/kf/S7f7b76e7cf66420b86b9568c549fe6ddQ.jpg" alt="תמונה 3" onclick="switchImg(this)" role="button" tabindex="0">
+          <img class="thumb"        src="https://ae01.alicdn.com/kf/S1eb3b34a88e94556960a74aba19d1c32A.jpg" alt="תמונה 4" onclick="switchImg(this)" role="button" tabindex="0">
+          <img class="thumb"        src="https://ae01.alicdn.com/kf/S5f5014746c6e43ed9d00f3c672b7630d7.jpg" alt="תמונה 5" onclick="switchImg(this)" role="button" tabindex="0">
+          <img class="thumb"        src="https://ae01.alicdn.com/kf/Sbe5af29f7201499ead545c967d98af36L.jpg" alt="תמונה 6" onclick="switchImg(this)" role="button" tabindex="0">
         </div>
       </div>
 
@@ -797,5 +835,16 @@
 
 <script src="js/i18n.js"></script>
 <script src="js/script.js"></script>
+<script>
+  function switchImg(thumb) {
+    document.getElementById('mainProductImg').src = thumb.src;
+    document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+    thumb.classList.add('active');
+  }
+  // keyboard support for thumbnails
+  document.querySelectorAll('.thumb').forEach(t => {
+    t.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') switchImg(t); });
+  });
+</script>
 </body>
 </html>
