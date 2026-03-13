@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="מתקן יציבה חכם – Smart Posture Corrector | חיישן רטט שמזהה יציבה לא נכונה | מחיר מבצע ב-AliExpress">
+  <meta name="theme-color" content="#7C3AED">
+  <meta property="og:title" content="מתקן יציבה חכם – Smart Posture Corrector | פשפשים">
+  <meta property="og:description" content="שמרו על גב ישר בכל מקום. מחיר מבצע ב-AliExpress.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80">
+  <title>מתקן יציבה חכם | פשפשים</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237C3AED'/><text y='.9em' font-size='75' x='12' font-family='Rubik,sans-serif' font-weight='900' fill='white'>פ</text></svg>">
+  <style>
+    /* ── Product Page Specific ── */
+    .product-hero {
+      padding-top: calc(var(--navbar-h) + var(--space-2xl));
+      padding-bottom: var(--space-3xl);
+      background: linear-gradient(135deg, #FAF9FF 0%, #F3F0FF 50%, #EDE9FE 100%);
+    }
+
+    .product-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: center;
+    }
+
+    /* Product gallery */
+    .product-gallery { position: relative; }
+
+    .product-main-img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .product-badge-hero {
+      position: absolute;
+      top: var(--space-lg);
+      inset-inline-start: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .badge-hero-item {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: var(--space-xs) var(--space-md);
+      background: #fff;
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .badge-hero-item.platform { background: #E50303; color: #fff; }
+
+    /* Product info */
+    .product-info { display: flex; flex-direction: column; gap: var(--space-lg); }
+
+    .product-category-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      background: var(--primary-bg);
+      color: var(--primary);
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      width: fit-content;
+    }
+
+    .product-title {
+      font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .product-subtitle {
+      font-size: var(--text-xl);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .product-intro {
+      font-size: var(--text-lg);
+      color: var(--text-muted);
+      line-height: 1.7;
+      border-right: 4px solid var(--primary);
+      padding-right: var(--space-lg);
+    }
+
+    body.ltr .product-intro {
+      border-right: none;
+      border-left: 4px solid var(--primary);
+      padding-right: 0;
+      padding-left: var(--space-lg);
+    }
+
+    /* Quick benefits */
+    .quick-benefits {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+    }
+
+    .benefit-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-size: var(--text-base);
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .benefit-icon {
+      width: 24px;
+      height: 24px;
+      background: var(--success-lt);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      font-size: 0.75rem;
+    }
+
+    /* CTA Box */
+    .cta-box {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dk));
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .cta-label {
+      font-size: var(--text-sm);
+      opacity: .8;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+
+    .cta-platform {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      background: rgba(255,255,255,.15);
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      width: fit-content;
+    }
+
+    .cta-price-note {
+      font-size: var(--text-sm);
+      opacity: .75;
+    }
+
+    .btn-aliexpress {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      padding: 1rem 2rem;
+      background: #fff;
+      color: var(--primary-dk);
+      border-radius: var(--radius-full);
+      font-weight: 800;
+      font-size: var(--text-lg);
+      text-decoration: none;
+      transition: all var(--dur-base) var(--ease-spring);
+      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+    }
+
+    .btn-aliexpress:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 28px rgba(0,0,0,.2);
+    }
+
+    .cta-trust {
+      display: flex;
+      gap: var(--space-lg);
+      font-size: var(--text-xs);
+      opacity: .8;
+      flex-wrap: wrap;
+    }
+
+    .trust-item { display: flex; align-items: center; gap: 4px; }
+
+    /* ── Sections ── */
+    .content-section { padding-block: var(--space-3xl); }
+    .content-section.bg-alt { background: var(--surface-2); }
+
+    /* Benefits grid */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-xl);
+      margin-top: var(--space-2xl);
+    }
+
+    .benefit-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      transition: all var(--dur-base) var(--ease);
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-lt);
+    }
+
+    .benefit-card-icon {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--primary-bg), #EDE9FE);
+      border-radius: var(--radius-lg);
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+    }
+
+    .benefit-card h3 {
+      font-size: var(--text-lg);
+      font-weight: 700;
+    }
+
+    .benefit-card p {
+      font-size: var(--text-base);
+      line-height: 1.6;
+    }
+
+    /* How it works */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-xl);
+      margin-top: var(--space-2xl);
+      position: relative;
+    }
+
+    .step-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--space-md);
+    }
+
+    .step-num {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: var(--text-2xl);
+      font-weight: 900;
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(124,58,237,.3);
+      flex-shrink: 0;
+    }
+
+    .step-icon { font-size: 2rem; margin-bottom: var(--space-xs); }
+    .step-card h3 { font-size: var(--text-lg); font-weight: 700; }
+    .step-card p { font-size: var(--text-sm); }
+
+    /* Specs table */
+    .specs-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: var(--space-2xl);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+    }
+
+    .specs-table tr:nth-child(even) td { background: var(--surface-2); }
+    .specs-table tr:first-child td { background: var(--primary); color: #fff; font-weight: 700; }
+    .specs-table tr:first-child td:last-child { color: rgba(255,255,255,.9); }
+
+    .specs-table td {
+      padding: var(--space-md) var(--space-lg);
+      font-size: var(--text-base);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .specs-table td:first-child {
+      font-weight: 700;
+      color: var(--text);
+      width: 40%;
+    }
+
+    .specs-table tr:last-child td { border-bottom: none; }
+
+    /* Who for */
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-lg);
+      margin-top: var(--space-2xl);
+    }
+
+    .who-card {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      transition: all var(--dur-base) var(--ease);
+    }
+
+    .who-card:hover {
+      background: var(--primary-bg);
+      border-color: var(--primary);
+      transform: translateX(-4px);
+    }
+
+    body.ltr .who-card:hover { transform: translateX(4px); }
+
+    .who-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      width: 48px;
+      text-align: center;
+    }
+
+    .who-card p { font-size: var(--text-base); font-weight: 600; color: var(--text); }
+
+    /* Bottom CTA */
+    .bottom-cta {
+      background: linear-gradient(135deg, var(--text) 0%, #312E81 100%);
+      color: #fff;
+      text-align: center;
+      padding-block: var(--space-3xl);
+    }
+
+    .bottom-cta .section-title { color: #fff; margin-bottom: var(--space-md); }
+    .bottom-cta .section-sub { color: rgba(255,255,255,.7); margin-bottom: var(--space-2xl); }
+
+    .bottom-cta-btns {
+      display: flex;
+      gap: var(--space-md);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      margin-bottom: var(--space-2xl);
+      flex-wrap: wrap;
+    }
+
+    .breadcrumb a { color: var(--primary); font-weight: 600; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb-sep { color: var(--border); }
+
+    /* Floating buy bar (mobile) */
+    .buy-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      inset-inline: 0;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: var(--space-md) var(--space-lg);
+      z-index: 800;
+      box-shadow: 0 -4px 20px rgba(0,0,0,.1);
+      gap: var(--space-md);
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .buy-bar-text { font-size: var(--text-sm); font-weight: 600; color: var(--text); }
+    .buy-bar-text span { display: block; font-size: var(--text-xs); color: var(--text-muted); font-weight: 400; }
+
+    @media (max-width: 768px) {
+      .buy-bar { display: flex; }
+      .product-hero-grid { grid-template-columns: 1fr; gap: var(--space-2xl); }
+      body { padding-bottom: 80px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav class="navbar" role="navigation" aria-label="ניווט ראשי">
+  <div class="container">
+    <a class="navbar-logo" href="/" aria-label="פשפשים — דף הבית">
+      <div class="logo-icon" aria-hidden="true">פ</div>
+      <span>פשפשים</span>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="/" data-i18n="nav_home">בית</a></li>
+      <li><a href="/shop" data-i18n="nav_shop">חנות</a></li>
+      <li><a href="/shop?type=affiliate" data-i18n="nav_deals">מבצעים</a></li>
+      <li><a href="/shop?type=secondhand" data-i18n="nav_secondhand">יד שנייה</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <div class="lang-switcher" role="group" aria-label="בחירת שפה">
+        <button class="lang-btn" data-lang="he">עב</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">РУ</button>
+      </div>
+      <a href="https://wa.me/972547921821" class="btn btn-accent" target="_blank" rel="noopener">WhatsApp</a>
+      <button class="hamburger" aria-label="פתח תפריט">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="nav-overlay" aria-hidden="true"></div>
+
+<!-- ── Product Hero ── -->
+<section class="product-hero">
+  <div class="container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="נתיב ניווט">
+      <a href="/">בית</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="/shop?type=affiliate">מבצעים</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="/shop?cat=health">בריאות</a>
+      <span class="breadcrumb-sep">›</span>
+      <span aria-current="page">מתקן יציבה חכם</span>
+    </nav>
+
+    <div class="product-hero-grid">
+
+      <!-- Image -->
+      <div class="product-gallery reveal">
+        <img
+          class="product-main-img"
+          src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=85"
+          alt="מתקן יציבה חכם Smart Posture Corrector"
+          loading="eager"
+        >
+        <div class="product-badge-hero">
+          <div class="badge-hero-item platform">AliExpress</div>
+          <div class="badge-hero-item">🔥 מבצע חם</div>
+          <div class="badge-hero-item">✅ משלוח בינלאומי</div>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="product-info reveal">
+        <div class="product-category-tag">
+          🌿 בריאות וכושר
+        </div>
+
+        <h1 class="product-title">מתקן יציבה חכם</h1>
+        <p class="product-subtitle">Smart Posture Corrector</p>
+
+        <p class="product-intro">
+          שמרו על גב ישר ויציבה נכונה בכל מקום — בעבודה, בלימודים ובחיי היום-יום.
+          חיישן חכם שמזהה תנוחה לא נכונה ומתריע ברטט.
+        </p>
+
+        <!-- Quick benefits -->
+        <div class="quick-benefits">
+          <div class="benefit-row">
+            <div class="benefit-icon">✔</div>
+            <span>מתריע ברטט כאשר מתכופפים</span>
+          </div>
+          <div class="benefit-row">
+            <div class="benefit-icon">✔</div>
+            <span>משפר הרגלי ישיבה ועמידה</span>
+          </div>
+          <div class="benefit-row">
+            <div class="benefit-icon">✔</div>
+            <span>קטן וקל משקל – כמעט לא מורגש</span>
+          </div>
+          <div class="benefit-row">
+            <div class="benefit-icon">✔</div>
+            <span>מתאים לעבודה, לימודים וקריאה</span>
+          </div>
+          <div class="benefit-row">
+            <div class="benefit-icon">✔</div>
+            <span>מתאים למבוגרים ולילדים</span>
+          </div>
+        </div>
+
+        <!-- CTA Box -->
+        <div class="cta-box">
+          <div class="cta-label">⚡ מחיר מבצע</div>
+          <div class="cta-platform">🛒 AliExpress — משלוח בינלאומי</div>
+
+          <a
+            href="https://s.click.aliexpress.com/e/_c3wYbR3H"
+            target="_blank"
+            rel="nofollow sponsored noopener"
+            class="btn-aliexpress"
+            aria-label="קנה מתקן יציבה חכם ב-AliExpress"
+          >
+            👉 בדקו מחיר וקנו ב-AliExpress
+          </a>
+
+          <p class="cta-price-note">המחיר עשוי להשתנות — לחצו לראות את המחיר הנוכחי</p>
+
+          <div class="cta-trust">
+            <div class="trust-item">🔒 תשלום מאובטח</div>
+            <div class="trust-item">📦 משלוח בינלאומי</div>
+            <div class="trust-item">↩️ החזר קל</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Why Use It ── -->
+<section class="content-section" aria-labelledby="benefits-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">💡 למה כדאי</span>
+      <h2 class="section-title" id="benefits-heading">למה כדאי להשתמש במתקן יציבה חכם?</h2>
+      <p class="section-sub">אם אתם עובדים שעות מול מחשב, לומדים או משתמשים הרבה בטלפון — סביר שהיציבה שלכם נפגעת</p>
+    </div>
+
+    <div class="benefits-grid stagger-children">
+      <div class="benefit-card reveal">
+        <div class="benefit-card-icon">📳</div>
+        <h3>התראת רטט חכמה</h3>
+        <p>החיישן מזהה כשאתם מתכופפים ומתריע ברטט עדין — בלי לשבש את הסביבה סביבכם.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-card-icon">🎯</div>
+        <h3>לימוד יציבה אישית</h3>
+        <p>המכשיר לומד את היציבה התקינה שלכם ספציפית — ולא מפריע כשאתם זזים טבעית.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-card-icon">🪶</div>
+        <h3>קטן ובלתי מורגש</h3>
+        <p>כ-90 גרם בלבד, עשוי מסיליקון רך — מתחבר לגב העליון ולא מפריע לתנועה.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-card-icon">🔋</div>
+        <h3>סוללה לכל השבוע</h3>
+        <p>200mAh נטענת via USB — מחזיקה עד שבוע בשימוש של ~4 שעות ביום.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-card-icon">👨‍👩‍👧‍👦</div>
+        <h3>לכל המשפחה</h3>
+        <p>מתאים גם למבוגרים שעובדים ממשרד, גם לילדים שלומדים ממושב הלימודים.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-card-icon">🎨</div>
+        <h3>3 צבעים לבחירה</h3>
+        <p>שחור, כחול וורוד — בחרו את הצבע שמתאים לסגנון שלכם.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── How it Works ── -->
+<section class="content-section bg-alt" aria-labelledby="how-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">⚙️ איך זה עובד</span>
+      <h2 class="section-title" id="how-heading">איך זה עובד?</h2>
+      <p class="section-sub">פשוט מאוד — 4 שלבים וסיימתם</p>
+    </div>
+
+    <div class="steps-grid stagger-children">
+      <div class="step-card reveal">
+        <div class="step-num">1</div>
+        <div class="step-icon">🩹</div>
+        <h3>מצמידים לגב</h3>
+        <p>מצמידים את המכשיר לגב העליון באמצעות הרצועה הנוחה.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">2</div>
+        <div class="step-icon">🧍</div>
+        <h3>יושבים ישר</h3>
+        <p>יושבים או עומדים ביציבה ישרה ולוחצים לשניה להגדרת בסיס.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">3</div>
+        <div class="step-icon">🧠</div>
+        <h3>המכשיר לומד</h3>
+        <p>האלגוריתם שומר את זווית הגוף כנקודת הייחוס האישית שלכם.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">4</div>
+        <div class="step-icon">📳</div>
+        <h3>רטט ותיקון</h3>
+        <p>בכל פעם שמתכופפים — הוא רוטט ומזכיר לכם להתיישר מיד.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Tech Specs ── -->
+<section class="content-section" aria-labelledby="specs-heading">
+  <div class="container" style="max-width: 760px;">
+    <div class="section-header reveal">
+      <span class="section-tag">📋 מפרט טכני</span>
+      <h2 class="section-title" id="specs-heading">מפרט טכני</h2>
+    </div>
+
+    <table class="specs-table reveal" aria-label="מפרט טכני של מתקן היציבה">
+      <tbody>
+        <tr>
+          <td>מאפיין</td>
+          <td>פרטים</td>
+        </tr>
+        <tr>
+          <td>חומר</td>
+          <td>סיליקון רפואי + ABS</td>
+        </tr>
+        <tr>
+          <td>משקל</td>
+          <td>כ-90 גרם</td>
+        </tr>
+        <tr>
+          <td>גודל</td>
+          <td>18.5 × 14.5 × 2 ס״מ</td>
+        </tr>
+        <tr>
+          <td>סוללה</td>
+          <td>200mAh — נטענת</td>
+        </tr>
+        <tr>
+          <td>טעינה</td>
+          <td>USB 5V (כבל מצורף)</td>
+        </tr>
+        <tr>
+          <td>זמן שימוש</td>
+          <td>עד שבוע (~4 שעות ביום)</td>
+        </tr>
+        <tr>
+          <td>צבעים</td>
+          <td>שחור / כחול / ורוד</td>
+        </tr>
+        <tr>
+          <td>פלטפורמת מכירה</td>
+          <td>AliExpress — משלוח בינלאומי</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ── Who Is It For ── -->
+<section class="content-section bg-alt" aria-labelledby="who-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">👥 למי זה מתאים</span>
+      <h2 class="section-title" id="who-heading">למי המוצר מתאים?</h2>
+    </div>
+
+    <div class="who-grid stagger-children">
+      <div class="who-card reveal">
+        <div class="who-icon">💻</div>
+        <p>אנשים שעובדים מול מחשב שעות ארוכות</p>
+      </div>
+      <div class="who-card reveal">
+        <div class="who-icon">🎓</div>
+        <p>סטודנטים ותלמידים שלומדים הרבה</p>
+      </div>
+      <div class="who-card reveal">
+        <div class="who-icon">🚗</div>
+        <p>נהגים שיושבים שעות ארוכות בנסיעה</p>
+      </div>
+      <div class="who-card reveal">
+        <div class="who-icon">📱</div>
+        <p>מי שמרבה להשתמש בטלפון ומתכופף</p>
+      </div>
+      <div class="who-card reveal">
+        <div class="who-icon">👨‍👩‍👦</div>
+        <p>הורים שרוצים לשפר את יציבת ילדיהם</p>
+      </div>
+      <div class="who-card reveal">
+        <div class="who-icon">💪</div>
+        <p>כל מי שרוצה לשפר יציבה ולהפחית עומס על הגב</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Bottom CTA ── -->
+<section class="bottom-cta" aria-labelledby="buy-heading">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag" style="background:rgba(255,255,255,.15);color:#fff;">⚡ מחיר מבצע</span>
+      <h2 class="section-title" id="buy-heading">קנו את המוצר במחיר מבצע</h2>
+      <p class="section-sub">
+        המוצר נמכר ב-AliExpress במחיר זול במיוחד עם משלוח בינלאומי.<br>
+        לחצו לראות את המחיר העדכני.
+      </p>
+
+      <div class="bottom-cta-btns">
+        <a
+          href="https://s.click.aliexpress.com/e/_c3wYbR3H"
+          target="_blank"
+          rel="nofollow sponsored noopener"
+          class="btn btn-accent btn-lg"
+          style="font-size: var(--text-xl); padding: 1rem 2rem;"
+          aria-label="קנה עכשיו ב-AliExpress"
+        >
+          👉 לחצו כאן לראות את המחיר העדכני
+        </a>
+        <a href="/shop?cat=health" class="btn btn-ghost btn-lg">
+          עוד מוצרי בריאות
+        </a>
+      </div>
+
+      <p style="margin-top: var(--space-lg); font-size: var(--text-xs); color: rgba(255,255,255,.5);">
+        * קישורי אפיליאייט — בקניה דרך הקישור אנחנו מקבלים עמלה קטנה בלי עלות נוספת עבורכם.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="navbar-logo">
+          <div class="logo-icon" aria-hidden="true">פ</div>
+          <span>פשפשים</span>
+        </div>
+        <p class="footer-desc">מציאות אמיתיות מ-Amazon, AliExpress ועוד — ומוצרי יד שנייה מכל הלב.</p>
+      </div>
+      <div>
+        <h3 class="footer-title">קישורים</h3>
+        <ul class="footer-links">
+          <li><a href="/">בית</a></li>
+          <li><a href="/shop">חנות</a></li>
+          <li><a href="/shop?type=affiliate">מבצעים</a></li>
+          <li><a href="/shop?type=secondhand">יד שנייה</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title">צור קשר</h3>
+        <ul class="footer-links">
+          <li><a href="https://wa.me/972547921821" target="_blank" rel="noopener" dir="ltr">WhatsApp: 054-792-1821</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 פשפשים. כל הזכויות שמורות.</p>
+      <p class="footer-credit">נבנה ע"י <a href="https://slavx.site" target="_blank" rel="noopener">SLAVX.SITE</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile buy bar -->
+<div class="buy-bar" role="complementary" aria-label="קנייה מהירה">
+  <div class="buy-bar-text">
+    מתקן יציבה חכם
+    <span>AliExpress — מחיר מבצע</span>
+  </div>
+  <a
+    href="https://s.click.aliexpress.com/e/_c3wYbR3H"
+    target="_blank"
+    rel="nofollow sponsored noopener"
+    class="btn btn-accent"
+  >
+    👉 לקנייה
+  </a>
+</div>
+
+<script src="js/i18n.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
