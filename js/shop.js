@@ -96,10 +96,12 @@ let sortBy = 'newest';
 
 /* ── CSV Parser ── */
 function parseCSV(text) {
-  const lines = text.trim().split('\n');
+  // handle both \r\n (Windows/Sheets) and \n
+  const lines = text.trim().split(/\r?\n/);
   if (lines.length < 2) return [];
   const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
   return lines.slice(1).map(line => {
+    if (!line.trim()) return null;
     const vals = [];
     let inQuote = false, cur = '';
     for (let i = 0; i < line.length; i++) {
@@ -111,25 +113,45 @@ function parseCSV(text) {
     const obj = {};
     headers.forEach((h, i) => obj[h] = (vals[i] || '').trim());
     return obj;
-  }).filter(p => p.id && p.active === 'TRUE');
+  }).filter(p => p && p.id && p.active === 'TRUE');
 }
 
-/* ── Fetch ── */
+/* ── Fetch with CORS proxy fallback ── */
+async function tryFetch(url) {
+  const res = await fetch(url, { cache: 'no-cache' });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const text = await res.text();
+  // sanity-check: must look like our CSV
+  if (!text.includes('name_he') && !text.includes('id,')) throw new Error('not our CSV');
+  return text;
+}
+
 async function fetchProducts() {
   if (!SHEET_CSV_URL) {
     allProducts = DEMO_PRODUCTS;
     applyFilters();
     return;
   }
-  try {
-    const res = await fetch(SHEET_CSV_URL);
-    if (!res.ok) throw new Error('fetch failed');
-    const text = await res.text();
-    allProducts = parseCSV(text);
-    if (!allProducts.length) allProducts = DEMO_PRODUCTS;
-  } catch {
+
+  const PROXY = 'https://corsproxy.io/?' + encodeURIComponent(SHEET_CSV_URL);
+
+  let text = null;
+
+  // 1. try direct (works when Google sends CORS headers)
+  try { text = await tryFetch(SHEET_CSV_URL); } catch {}
+
+  // 2. fallback — CORS proxy
+  if (!text) {
+    try { text = await tryFetch(PROXY); } catch {}
+  }
+
+  if (text) {
+    const parsed = parseCSV(text);
+    allProducts = parsed.length ? parsed : DEMO_PRODUCTS;
+  } else {
     allProducts = DEMO_PRODUCTS;
   }
+
   applyFilters();
 }
 
