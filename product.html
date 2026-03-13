@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7C3AED">
+  <title>פשפשים — מוצר</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237C3AED'/><text y='.9em' font-size='75' x='12' font-family='Rubik,sans-serif' font-weight='900' fill='white'>פ</text></svg>">
+  <style>
+    .product-hero {
+      padding-top: calc(var(--navbar-h) + var(--space-2xl));
+      padding-bottom: var(--space-3xl);
+      background: linear-gradient(135deg, #FAF9FF 0%, #F3F0FF 50%, #EDE9FE 100%);
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+    }
+    .product-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+      align-items: center;
+      width: 100%;
+    }
+    /* Gallery */
+    .product-gallery { display: flex; flex-direction: column; gap: var(--space-md); }
+    .main-img-wrap {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: var(--surface);
+      box-shadow: var(--shadow-xl);
+      aspect-ratio: 1;
+      cursor: zoom-in;
+    }
+    #mainImg {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      padding: var(--space-md);
+      transition: transform 0.4s var(--ease);
+    }
+    .main-img-wrap:hover #mainImg { transform: scale(1.06); }
+    .img-badges {
+      position: absolute; top: var(--space-md); inset-inline-start: var(--space-md);
+      display: flex; flex-direction: column; gap: var(--space-xs);
+    }
+    .img-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 4px 10px; border-radius: var(--radius-full);
+      font-size: var(--text-xs); font-weight: 700;
+      background: #fff; box-shadow: var(--shadow-sm);
+    }
+    .img-badge.aliexpress { background: #E50303; color: #fff; }
+    .img-badge.amazon { background: #FF9900; color: #fff; }
+    .img-badge.ebay { background: #0064D2; color: #fff; }
+    .img-badge.hot { background: var(--danger); color: #fff; }
+    .img-badge.sale { background: var(--accent); color: #fff; }
+    .img-badge.secondhand { background: var(--success); color: #fff; }
+    .thumb-row {
+      display: flex; gap: var(--space-sm); flex-wrap: wrap;
+    }
+    .thumb {
+      width: 68px; height: 68px; object-fit: contain; padding: 4px;
+      border-radius: var(--radius-md); border: 2px solid var(--border);
+      cursor: pointer; transition: all 0.2s; opacity: .65; background: #fff; flex-shrink: 0;
+    }
+    .thumb.active, .thumb:hover { border-color: var(--primary); opacity: 1; transform: scale(1.06); }
+
+    /* Info */
+    .product-info { display: flex; flex-direction: column; gap: var(--space-lg); }
+    .product-cat-tag {
+      display: inline-flex; align-items: center; gap: var(--space-sm);
+      background: var(--primary-bg); color: var(--primary);
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--radius-full); font-size: var(--text-sm); font-weight: 700; width: fit-content;
+    }
+    .product-title { font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl)); font-weight: 900; line-height: 1.2; }
+    .product-desc-lead {
+      font-size: var(--text-lg); color: var(--text-muted); line-height: 1.7;
+      border-inline-start: 4px solid var(--primary); padding-inline-start: var(--space-lg);
+    }
+    .price-row { display: flex; align-items: baseline; gap: var(--space-md); flex-wrap: wrap; }
+    .price-big { font-size: clamp(var(--text-3xl), 5vw, var(--text-4xl)); font-weight: 900; color: var(--text); }
+    .price-was { font-size: var(--text-xl); color: var(--text-light); text-decoration: line-through; }
+    .price-save {
+      font-size: var(--text-base); font-weight: 700; color: var(--success-dk);
+      background: var(--success-lt); padding: 3px 10px; border-radius: var(--radius-full);
+    }
+    .quick-bullets {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: var(--space-lg);
+      display: flex; flex-direction: column; gap: var(--space-sm);
+    }
+    .bullet {
+      display: flex; align-items: flex-start; gap: var(--space-sm);
+      font-size: var(--text-base); font-weight: 500; color: var(--text);
+    }
+    .bullet-dot {
+      width: 22px; height: 22px; border-radius: 50%; background: var(--success-lt);
+      color: var(--success-dk); display: grid; place-items: center;
+      font-size: 0.7rem; font-weight: 900; flex-shrink: 0; margin-top: 2px;
+    }
+    /* CTA box */
+    .cta-box {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dk));
+      border-radius: var(--radius-xl); padding: var(--space-xl);
+      display: flex; flex-direction: column; gap: var(--space-md); color: #fff;
+    }
+    .cta-sub { font-size: var(--text-sm); opacity: .8; }
+    .btn-main-buy {
+      display: flex; align-items: center; justify-content: center; gap: var(--space-sm);
+      padding: 1rem 1.5rem; border-radius: var(--radius-full);
+      font-weight: 800; font-size: var(--text-lg); transition: all 0.25s var(--ease-spring);
+      text-decoration: none; border: none; cursor: pointer;
+    }
+    .btn-main-buy.affiliate { background: #fff; color: var(--primary-dk); }
+    .btn-main-buy.affiliate:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+    .btn-main-buy.whatsapp { background: #25D366; color: #fff; }
+    .btn-main-buy.whatsapp:hover { background: #128C7E; transform: translateY(-2px); }
+    .cta-trust { display: flex; gap: var(--space-lg); font-size: var(--text-xs); opacity: .75; flex-wrap: wrap; }
+    .condition-pill {
+      display: inline-flex; align-items: center; gap: var(--space-sm);
+      background: var(--success-lt); color: var(--success-dk);
+      padding: var(--space-sm) var(--space-md); border-radius: var(--radius-full);
+      font-weight: 700; font-size: var(--text-sm); width: fit-content;
+    }
+
+    /* Description section */
+    .desc-section { padding-block: var(--space-3xl); }
+    .desc-section.alt { background: var(--surface-2); }
+    .desc-body {
+      max-width: 760px; margin-inline: auto;
+      font-size: var(--text-lg); color: var(--text-muted); line-height: 1.85;
+    }
+    .desc-body h3 { color: var(--text); font-size: var(--text-2xl); margin-block: var(--space-xl) var(--space-md); }
+    .desc-body ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm); padding: 0; }
+    .desc-body ul li::before { content: '✔ '; color: var(--success-dk); font-weight: 700; }
+    .desc-body ul li { padding-inline-start: var(--space-md); }
+
+    /* Specs */
+    .specs-table {
+      width: 100%; border-collapse: separate; border-spacing: 0;
+      border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden;
+    }
+    .specs-table td { padding: var(--space-md) var(--space-lg); font-size: var(--text-base); border-bottom: 1px solid var(--border); }
+    .specs-table tr:last-child td { border-bottom: none; }
+    .specs-table tr:nth-child(even) td { background: var(--surface-2); }
+    .specs-table td:first-child { font-weight: 700; color: var(--text); width: 40%; }
+    .specs-head td { background: var(--primary) !important; color: #fff; font-weight: 700; }
+
+    /* Related */
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--space-lg); }
+
+    /* Loading / Error */
+    .page-loading {
+      min-height: 80vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: var(--space-lg); text-align: center;
+    }
+    .spinner {
+      width: 48px; height: 48px; border: 4px solid var(--primary-bg);
+      border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Lightbox */
+    .lightbox {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,.92);
+      z-index: 2000; place-items: center; cursor: zoom-out;
+    }
+    .lightbox.open { display: grid; }
+    .lightbox img { max-width: 92vw; max-height: 92vh; object-fit: contain; border-radius: var(--radius-lg); }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex; align-items: center; gap: var(--space-sm);
+      font-size: var(--text-sm); color: var(--text-muted); margin-bottom: var(--space-xl); flex-wrap: wrap;
+    }
+    .breadcrumb a { color: var(--primary); font-weight: 600; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* Mobile buy bar */
+    .buy-bar {
+      display: none; position: fixed; bottom: 0; inset-inline: 0;
+      background: var(--surface); border-top: 1px solid var(--border);
+      padding: var(--space-md) var(--space-lg); z-index: 800;
+      box-shadow: 0 -4px 20px rgba(0,0,0,.1); gap: var(--space-md);
+      align-items: center; justify-content: space-between;
+    }
+    .buy-bar-info { font-size: var(--text-sm); font-weight: 700; }
+    .buy-bar-info span { display: block; font-weight: 400; color: var(--text-muted); font-size: var(--text-xs); }
+
+    @media (max-width: 768px) {
+      .product-hero-grid { grid-template-columns: 1fr; }
+      .buy-bar { display: flex; }
+      body { padding-bottom: 80px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar" role="navigation">
+  <div class="container">
+    <a class="navbar-logo" href="/">
+      <div class="logo-icon" aria-hidden="true">פ</div>
+      <span>פשפשים</span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="/" data-i18n="nav_home">בית</a></li>
+      <li><a href="/shop" data-i18n="nav_shop">חנות</a></li>
+      <li><a href="/shop?type=affiliate" data-i18n="nav_deals">מבצעים</a></li>
+      <li><a href="/shop?type=secondhand" data-i18n="nav_secondhand">יד שנייה</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="lang-switcher" role="group">
+        <button class="lang-btn" data-lang="he">עב</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">РУ</button>
+      </div>
+      <a href="https://wa.me/972547921821" class="btn btn-accent" target="_blank" rel="noopener">WhatsApp</a>
+      <button class="hamburger" aria-label="תפריט"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="nav-overlay"></div>
+
+<!-- Dynamic content renders here -->
+<div id="pageContent">
+  <div class="page-loading">
+    <div class="spinner"></div>
+    <p style="color:var(--text-muted)">טוען מוצר...</p>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightboxImg" src="" alt="תמונה מוגדלת">
+</div>
+
+<!-- Mobile buy bar -->
+<div class="buy-bar" id="buyBar">
+  <div class="buy-bar-info">
+    <span id="buyBarName"></span>
+    <span id="buyBarSub"></span>
+  </div>
+  <button id="buyBarBtn" class="btn btn-primary">קנה</button>
+</div>
+
+<!-- Footer -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="navbar-logo"><div class="logo-icon">פ</div><span>פשפשים</span></div>
+        <p class="footer-desc">מציאות אמיתיות מ-Amazon, AliExpress ועוד — ומוצרי יד שנייה.</p>
+      </div>
+      <div>
+        <h3 class="footer-title" data-i18n="footer_links">קישורים</h3>
+        <ul class="footer-links">
+          <li><a href="/" data-i18n="nav_home">בית</a></li>
+          <li><a href="/shop" data-i18n="nav_shop">חנות</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title" data-i18n="footer_contact_title">צור קשר</h3>
+        <ul class="footer-links">
+          <li><a href="https://wa.me/972547921821" target="_blank" dir="ltr">054-792-1821</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-i18n="footer_rights">© 2025 פשפשים.</p>
+      <p class="footer-credit"><a href="https://slavx.site" target="_blank">SLAVX.SITE</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/i18n.js"></script>
+<script src="js/script.js"></script>
+<script src="js/shop.js"></script>
+<script>
+/* ══════════════════════════════════════
+   product.html — Dynamic Product Page
+   ══════════════════════════════════════ */
+
+const CAT_ICONS = {
+  tech:'📱', fashion:'👗', home:'🏠', sport:'🏋️',
+  books:'📚', kids:'🧸', gaming:'🎮', tools:'🔧', health:'🌿', other:'✨'
+};
+
+function getPlatformName(p) {
+  const m = { amazon:'Amazon', aliexpress:'AliExpress', ebay:'eBay', other:'Online' };
+  return m[p?.toLowerCase()] || p || '';
+}
+
+function getProductField(p, base) {
+  const lang = currentLang || 'he';
+  return p[`${base}_${lang}`] || p[`${base}_he`] || p[`${base}_en`] || '';
+}
+
+function buildBullets(desc) {
+  /* Try to extract bullet points from description if they contain — or ✔ or • */
+  return desc.split(/[.!]/).filter(s => s.trim().length > 10).slice(0, 5)
+    .map(s => `<li>${s.trim()}</li>`).join('');
+}
+
+function renderProductPage(p, allProds) {
+  const name    = getProductField(p, 'name');
+  const desc    = getProductField(p, 'desc');
+  const isAffiliate = p.type === 'affiliate';
+  const discount = p.original_price
+    ? Math.round((1 - +p.price / +p.original_price) * 100) : 0;
+
+  /* Set page title & meta */
+  document.title = `${name} | פשפשים`;
+
+  /* Platform badge class */
+  const platClass = (p.platform || '').toLowerCase();
+  const platName  = getPlatformName(p.platform);
+
+  /* Price HTML */
+  const priceHTML = p.original_price
+    ? `<span class="price-big">₪${(+p.price).toLocaleString()}</span>
+       <span class="price-was">₪${(+p.original_price).toLocaleString()}</span>
+       <span class="price-save">חיסכון ${discount}%</span>`
+    : `<span class="price-big">₪${(+p.price).toLocaleString()}</span>`;
+
+  /* CTA button */
+  const ctaBtn = isAffiliate
+    ? `<a href="${p.link}" target="_blank" rel="nofollow sponsored noopener"
+          class="btn-main-buy affiliate" id="mainCta">
+         🛒 קנה עכשיו ב-${platName}
+       </a>`
+    : `<button onclick="waContact()" class="btn-main-buy whatsapp" id="mainCta">
+         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.135.563 4.14 1.538 5.875L0 24l6.304-1.516A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.933 0-3.742-.522-5.292-1.432L2 22l1.448-4.572A9.963 9.963 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+         צור קשר ב-WhatsApp
+       </button>`;
+
+  /* Related products (same category, not this one) */
+  const related = allProds.filter(x => x.category === p.category && x.id !== p.id).slice(0, 4);
+  const relatedHTML = related.length ? `
+    <section class="desc-section alt">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">✨ קשורים</span>
+          <h2 class="section-title">מוצרים דומים</h2>
+        </div>
+        <div class="related-grid stagger-children">
+          ${related.map(r => {
+            const rName = getProductField(r, 'name');
+            return `
+            <a href="/product?id=${r.id}" class="product-card reveal" style="text-decoration:none;">
+              <div class="card-image-wrap">
+                <img src="${r.image}" alt="${rName}" loading="lazy"
+                     onerror="this.src='https://via.placeholder.com/400x300?text=No+Image'">
+                <div class="card-type-indicator ${r.type}">${r.type==='affiliate'?'🔗':'♻️'}</div>
+              </div>
+              <div class="card-body">
+                <p class="card-category">${CAT_ICONS[r.category]||''} ${r.category}</p>
+                <h3 class="card-title">${rName}</h3>
+                <div class="card-footer">
+                  <div class="card-price"><span class="price-current">₪${(+r.price).toLocaleString()}</span></div>
+                  <span class="btn btn-ghost" style="font-size:var(--text-sm);">צפה</span>
+                </div>
+              </div>
+            </a>`;
+          }).join('')}
+        </div>
+      </div>
+    </section>` : '';
+
+  /* Condition badge (secondhand) */
+  const conditionHTML = p.condition
+    ? `<div class="condition-pill">♻️ מצב: ${p.condition}</div>` : '';
+
+  /* Platform badge */
+  const platBadgeHTML = isAffiliate && platClass
+    ? `<div class="img-badge ${platClass}">${platName}</div>` : '';
+
+  const badgeHTML = p.badge === 'hot'  ? `<div class="img-badge hot">🔥 חם</div>`
+                  : p.badge === 'sale' ? `<div class="img-badge sale">🏷️ מבצע</div>`
+                  : p.badge === 'new'  ? `<div class="img-badge" style="background:var(--success);color:#fff">✨ חדש</div>`
+                  : '';
+
+  const catLabel = t('cat_' + p.category) || p.category;
+  const catIcon  = CAT_ICONS[p.category] || '📦';
+
+  document.getElementById('pageContent').innerHTML = `
+
+    <!-- Hero -->
+    <section class="product-hero">
+      <div class="container">
+        <nav class="breadcrumb">
+          <a href="/">בית</a><span>›</span>
+          <a href="/shop">חנות</a><span>›</span>
+          <a href="/shop?cat=${p.category}">${catIcon} ${catLabel}</a><span>›</span>
+          <span>${name}</span>
+        </nav>
+        <div class="product-hero-grid">
+
+          <!-- Gallery -->
+          <div class="product-gallery reveal">
+            <div class="main-img-wrap" onclick="openLightbox('${p.image}')">
+              <img id="mainImg" src="${p.image}"
+                   alt="${name}"
+                   onerror="this.src='https://placehold.co/600x600?text=No+Image'">
+              <div class="img-badges">
+                ${platBadgeHTML}
+                ${badgeHTML}
+                ${conditionHTML ? `<div class="img-badge" style="background:var(--success);color:#fff">♻️ ${p.condition}</div>` : ''}
+              </div>
+            </div>
+            <div class="thumb-row">
+              <img class="thumb active" src="${p.image}" alt="${name}"
+                   onclick="switchThumb(this, '${p.image}')">
+            </div>
+            <p style="font-size:var(--text-xs);color:var(--text-light);text-align:center;">
+              לחץ על התמונה להגדלה
+            </p>
+          </div>
+
+          <!-- Info -->
+          <div class="product-info reveal">
+            <div class="product-cat-tag">${catIcon} ${catLabel}</div>
+            <h1 class="product-title">${name}</h1>
+            ${conditionHTML}
+
+            <div class="price-row">${priceHTML}</div>
+
+            <p class="product-desc-lead">${desc}</p>
+
+            <div class="cta-box">
+              <p class="cta-sub">${isAffiliate ? '⚡ מחיר מבצע — לחץ לראות מחיר עדכני' : '📞 ליצור קשר לפרטים ומסירה'}</p>
+              ${ctaBtn}
+              ${isAffiliate ? `
+              <div class="cta-trust">
+                <span>🔒 תשלום מאובטח</span>
+                <span>📦 משלוח בינלאומי</span>
+                <span>↩️ החזר קל</span>
+              </div>` : `
+              <div class="cta-trust">
+                <span>💬 תגובה מהירה</span>
+                <span>🤝 מסירה נוחה</span>
+                <span>✅ מחיר הוגן</span>
+              </div>`}
+            </div>
+
+            <a href="/shop?cat=${p.category}" class="btn btn-ghost" style="width:fit-content;">
+              ← חזרה לקטגוריה
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Full Description -->
+    <section class="desc-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">📋 תיאור המוצר</span>
+          <h2 class="section-title">פרטים מלאים</h2>
+        </div>
+        <div class="desc-body reveal">
+          <p>${desc}</p>
+          ${p.type === 'affiliate' ? `
+          <h3>למה לקנות דרכנו?</h3>
+          <ul>
+            <li>מצאנו את המחיר הטוב ביותר עבורך</li>
+            <li>קישור ישיר לאתר הרשמי — ${platName}</li>
+            <li>תשלום מאובטח ומוגן</li>
+            <li>משלוח עד הבית</li>
+            <li>אחריות ומדיניות החזרה של הפלטפורמה</li>
+          </ul>` : `
+          <h3>פרטי המוצר</h3>
+          <ul>
+            <li>מצב: ${p.condition || 'ראה תיאור'}</li>
+            <li>מחיר: ₪${(+p.price).toLocaleString()} — ניתן למשא ומתן</li>
+            <li>מסירה: בתיאום אישי</li>
+            <li>תשלום: מזומן / Bit / PayBox</li>
+          </ul>`}
+        </div>
+      </div>
+    </section>
+
+    <!-- Specs table -->
+    <section class="desc-section alt">
+      <div class="container" style="max-width:720px;">
+        <div class="section-header reveal">
+          <span class="section-tag">📊 מפרט</span>
+          <h2 class="section-title">מפרט מוצר</h2>
+        </div>
+        <table class="specs-table reveal">
+          <tbody>
+            <tr class="specs-head"><td>פרט</td><td>מידע</td></tr>
+            <tr><td>שם</td><td>${name}</td></tr>
+            <tr><td>קטגוריה</td><td>${catIcon} ${catLabel}</td></tr>
+            <tr><td>מחיר</td><td>₪${(+p.price).toLocaleString()}</td></tr>
+            ${p.original_price ? `<tr><td>מחיר מקורי</td><td>₪${(+p.original_price).toLocaleString()}</td></tr>` : ''}
+            ${discount ? `<tr><td>חיסכון</td><td><span style="color:var(--success-dk);font-weight:700;">${discount}%</span></td></tr>` : ''}
+            ${isAffiliate ? `<tr><td>פלטפורמה</td><td>${platName}</td></tr>` : ''}
+            ${p.condition ? `<tr><td>מצב</td><td>${p.condition}</td></tr>` : ''}
+            <tr><td>סוג</td><td>${isAffiliate ? '🔗 אפיליאייט' : '♻️ יד שנייה'}</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Related -->
+    ${relatedHTML}
+
+    <!-- Bottom CTA -->
+    <section style="background:linear-gradient(135deg,var(--text),#312E81);padding-block:var(--space-3xl);text-align:center;">
+      <div class="container reveal">
+        <h2 style="color:#fff;font-size:clamp(var(--text-2xl),4vw,var(--text-3xl));margin-bottom:var(--space-md);">
+          ${isAffiliate ? '⚡ קנה עכשיו במחיר מבצע' : '💬 מעוניין? צור קשר'}
+        </h2>
+        <p style="color:rgba(255,255,255,.7);margin-bottom:var(--space-xl);">
+          ${isAffiliate ? 'לחץ לראות את המחיר העדכני ב-' + platName : 'שלח הודעה ב-WhatsApp לפרטים נוספים'}
+        </p>
+        <div style="display:flex;gap:var(--space-md);justify-content:center;flex-wrap:wrap;">
+          ${isAffiliate
+            ? `<a href="${p.link}" target="_blank" rel="nofollow sponsored noopener" class="btn btn-accent btn-lg">
+                 👉 לקנייה ב-${platName}
+               </a>`
+            : `<button onclick="waContact()" class="btn btn-whatsapp btn-lg">📲 WhatsApp</button>`}
+          <a href="/shop" class="btn btn-ghost btn-lg" style="color:#fff;border-color:rgba(255,255,255,.3);">
+            חזרה לחנות
+          </a>
+        </div>
+      </div>
+    </section>`;
+
+  /* Mobile bar */
+  const buyBar = document.getElementById('buyBar');
+  buyBar.style.display = 'flex';
+  document.getElementById('buyBarName').textContent = name;
+  document.getElementById('buyBarSub').textContent = `₪${(+p.price).toLocaleString()}${isAffiliate?' · '+platName:' · יד שנייה'}`;
+  const barBtn = document.getElementById('buyBarBtn');
+  if (isAffiliate) {
+    barBtn.onclick = () => window.open(p.link, '_blank');
+    barBtn.textContent = 'קנה ›';
+    barBtn.className = 'btn btn-primary';
+  } else {
+    barBtn.onclick = waContact;
+    barBtn.textContent = 'WhatsApp ›';
+    barBtn.className = 'btn btn-whatsapp';
+  }
+
+  /* WhatsApp contact for secondhand */
+  window.waContact = () => {
+    const lang = currentLang || 'he';
+    const msgs = {
+      he: `היי! ראיתי את "${name}" בפשפשים ואני מעוניין/ת. אפשר לקבל פרטים? 🙏`,
+      en: `Hi! I saw "${name}" on פשפשים and I'm interested. Can I get more info? 🙏`,
+      ru: `Привет! Я видел "${name}" на פשפשים и заинтересован. Можно подробнее? 🙏`,
+    };
+    window.open(`https://wa.me/972547921821?text=${encodeURIComponent(msgs[lang]||msgs.he)}`, '_blank');
+  };
+
+  /* Re-init animations */
+  document.querySelectorAll('.reveal').forEach(el => {
+    if (typeof revealObserver !== 'undefined' && revealObserver) revealObserver.observe(el);
+    else el.classList.add('visible');
+  });
+
+  /* Apply language */
+  setLang(currentLang || 'he');
+}
+
+/* ── Lightbox ── */
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+/* ── Thumb switcher ── */
+function switchThumb(el, src) {
+  document.getElementById('mainImg').src = src;
+  document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+/* ── Error page ── */
+function showError() {
+  document.getElementById('pageContent').innerHTML = `
+    <div class="page-loading">
+      <span style="font-size:4rem;">😕</span>
+      <h2>המוצר לא נמצא</h2>
+      <p style="color:var(--text-muted)">ייתכן שהמוצר הוסר או שהקישור שגוי.</p>
+      <a href="/shop" class="btn btn-primary btn-lg">חזרה לחנות</a>
+    </div>`;
+}
+
+/* ── Main init ── */
+document.addEventListener('DOMContentLoaded', async () => {
+  const id = new URLSearchParams(window.location.search).get('id');
+  if (!id) { showError(); return; }
+
+  await fetchProducts();   // uses shop.js — loads from Google Sheets
+
+  const product = allProducts.find(p => String(p.id) === String(id));
+  if (!product) { showError(); return; }
+
+  renderProductPage(product, allProducts);
+});
+
+/* Re-render on lang change */
+document.addEventListener('langchange', () => {
+  const id = new URLSearchParams(window.location.search).get('id');
+  if (!id || !allProducts.length) return;
+  const product = allProducts.find(p => String(p.id) === String(id));
+  if (product) renderProductPage(product, allProducts);
+});
+</script>
+</body>
+</html>

@@ -4,6 +4,7 @@
   "outputDirectory": ".",
   "routes": [
     { "src": "/shop", "dest": "/shop.html" },
+    { "src": "/product", "dest": "/product.html" },
     { "src": "/posture-corrector", "dest": "/posture-corrector.html" },
     {
       "src": "/(.*\\.(css|js|svg|png|jpg|ico|webp|woff2))",
