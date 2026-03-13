@@ -189,11 +189,11 @@ function applyFilters() {
 
 /* ── Render ── */
 function getProductName(p) {
-  const lang = window.currentLang || 'he';
+  const lang = currentLang || 'he';
   return p[`name_${lang}`] || p.name_he || p.name_en || '';
 }
 function getProductDesc(p) {
-  const lang = window.currentLang || 'he';
+  const lang = currentLang || 'he';
   return p[`desc_${lang}`] || p.desc_he || p.desc_en || '';
 }
 
@@ -306,7 +306,7 @@ function contactProduct(id) {
   const p = allProducts.find(x => x.id === id);
   if (!p) return;
   const name = getProductName(p);
-  const lang = window.currentLang || 'he';
+  const lang = currentLang || 'he';
   const msgs = {
     he: `היי! ראיתי את "${name}" בפשפשים ואני מעוניין/ת. אפשר לקבל פרטים? 🙏`,
     en: `Hi! I saw "${name}" on פשפשים and I'm interested. Can I get more details? 🙏`,
