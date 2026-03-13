@@ -8,7 +8,7 @@
       id,name_he,name_en,name_ru,desc_he,desc_en,desc_ru,price,original_price,image,category,type,platform,link,condition,badge,active
    2. File → Share → Publish to web → CSV → Copy URL
    3. הדבק כאן: */
-const SHEET_CSV_URL = '';
+const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTlB282cDR9KIFsgggOCg6K_UOy6QriYlKPqd50z8JYhDgtWnKs9AyHl20sqNMgY7O8oIBvmCqU-YWJ/pub?output=csv';
 
 /* ── Fallback demo products ── */
 const DEMO_PRODUCTS = [
