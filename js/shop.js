@@ -10,7 +10,7 @@
    3. הדבק כאן: */
 const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTlB282cDR9KIFsgggOCg6K_UOy6QriYlKPqd50z8JYhDgtWnKs9AyHl20sqNMgY7O8oIBvmCqU-YWJ/pub?output=csv';
 
-/* ── Fallback demo products ── */
+/* ── Fallback demo products — must stay in sync with products.csv / Google Sheets ── */
 const DEMO_PRODUCTS = [
   {
     id: '1', name_he: 'AirPods Pro 2', name_en: 'AirPods Pro 2', name_ru: 'AirPods Pro 2',
@@ -44,45 +44,51 @@ const DEMO_PRODUCTS = [
   },
   {
     id: '6', name_he: 'כוס תרמוס 500ml', name_en: 'Thermos Cup 500ml', name_ru: 'Термос 500мл',
-    desc_he: 'שומרת חם/קר 12 שעות, נירוסטה, ידידותית לסביבה', desc_en: 'Keeps hot/cold 12 hours, stainless steel, eco-friendly', desc_ru: 'Сохраняет тепло/холод 12 часов, нержавеющая сталь',
+    desc_he: 'שומרת חם/קר 12 שעות - נירוסטה - ידידותית לסביבה', desc_en: 'Keeps hot/cold 12 hours - stainless steel - eco-friendly', desc_ru: 'Сохраняет тепло/холод 12 часов - нержавеющая сталь',
     price: '29', original_price: '59', image: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&q=80',
     category: 'home', type: 'affiliate', platform: 'aliexpress', link: 'https://aliexpress.com', condition: '', badge: '', active: 'TRUE'
   },
   {
-    id: '7', name_he: 'iPad Air דור 5 — יד שנייה', name_en: 'iPad Air 5th Gen — Used', name_ru: 'iPad Air 5-е поколение — Б/У',
-    desc_he: 'iPad Air 5 במצב מצוין, עם כיסוי. עובד כמו חדש!', desc_en: 'iPad Air 5 in excellent condition, with cover. Works like new!', desc_ru: 'iPad Air 5 в отличном состоянии, с чехлом. Работает как новый!',
+    id: '7', name_he: 'אוזניות Sony WH-1000XM4', name_en: 'Sony WH-1000XM4 Headphones', name_ru: 'Наушники Sony WH-1000XM4',
+    desc_he: 'אוזניות Sony פרמיום עם ביטול רעשים — הטובות בקטגוריה', desc_en: 'Sony premium headphones with noise cancellation — best in class', desc_ru: 'Премиум наушники Sony с шумоподавлением — лучшие в классе',
+    price: '799', original_price: '1299', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80',
+    category: 'tech', type: 'affiliate', platform: 'amazon', link: 'https://amazon.com', condition: '', badge: 'hot', active: 'TRUE'
+  },
+  {
+    id: '8', name_he: 'מתקן יציבה חכם', name_en: 'Smart Posture Corrector', name_ru: 'Умный корректор осанки',
+    desc_he: 'חיישן חכם שמזהה יציבה לא נכונה ומתריע ברטט — קטן וקל', desc_en: 'Smart sensor detects bad posture and vibrates to alert — small and lightweight', desc_ru: 'Умный датчик определяет неправильную осанку и вибрирует — маленький и лёгкий',
+    price: '89', original_price: '149', image: 'https://ae01.alicdn.com/kf/Scd2353bf280946c998f929237ecb9bb11.jpg',
+    category: 'health', type: 'affiliate', platform: 'aliexpress', link: 'https://s.click.aliexpress.com/e/_c3wYbR3H', condition: '', badge: 'hot', active: 'TRUE'
+  },
+  {
+    id: '9', name_he: 'iPad Air דור 5 — יד שנייה', name_en: 'iPad Air 5th Gen — Used', name_ru: 'iPad Air 5-е поколение — Б/У',
+    desc_he: 'iPad Air 5 במצב מצוין עם כיסוי. עובד כמו חדש!', desc_en: 'iPad Air 5 in excellent condition with cover. Works like new!', desc_ru: 'iPad Air 5 в отличном состоянии с чехлом. Работает как новый!',
     price: '900', original_price: '', image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&q=80',
     category: 'tech', type: 'secondhand', platform: '', link: '', condition: 'כמו חדש', badge: '', active: 'TRUE'
   },
   {
-    id: '8', name_he: 'גיטרה אקוסטית Yamaha', name_en: 'Yamaha Acoustic Guitar', name_ru: 'Акустическая гитара Yamaha',
-    desc_he: 'גיטרה אקוסטית יפה, מצב טוב, מגיעה עם תיק', desc_en: 'Beautiful acoustic guitar, good condition, comes with bag', desc_ru: 'Красивая акустическая гитара, хорошее состояние, с чехлом',
+    id: '10', name_he: 'גיטרה אקוסטית Yamaha', name_en: 'Yamaha Acoustic Guitar', name_ru: 'Акустическая гитара Yamaha',
+    desc_he: 'גיטרה אקוסטית יפה במצב טוב — מגיעה עם תיק', desc_en: 'Beautiful acoustic guitar in good condition — comes with bag', desc_ru: 'Красивая акустическая гитара в хорошем состоянии — с чехлом',
     price: '350', original_price: '', image: 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=400&q=80',
     category: 'other', type: 'secondhand', platform: '', link: '', condition: 'טוב', badge: '', active: 'TRUE'
   },
   {
-    id: '9', name_he: 'מצלמת LEGO Creator 3-in-1', name_en: 'LEGO Creator 3-in-1', name_ru: 'LEGO Creator 3-в-1',
-    desc_he: 'סט לגו שלם עם הוראות, לא חסר אף חלק', desc_en: 'Complete LEGO set with instructions, no missing pieces', desc_ru: 'Полный набор LEGO с инструкциями, все детали на месте',
+    id: '11', name_he: 'LEGO Creator 3-in-1', name_en: 'LEGO Creator 3-in-1', name_ru: 'LEGO Creator 3-в-1',
+    desc_he: 'סט לגו שלם עם הוראות — לא חסר אף חלק', desc_en: 'Complete LEGO set with instructions — no missing pieces', desc_ru: 'Полный набор LEGO с инструкциями — все детали на месте',
     price: '120', original_price: '', image: 'https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?w=400&q=80',
     category: 'kids', type: 'secondhand', platform: '', link: '', condition: 'כמו חדש', badge: '', active: 'TRUE'
   },
   {
-    id: '10', name_he: 'קורקינט חשמלי Xiaomi', name_en: 'Xiaomi Electric Scooter', name_ru: 'Электросамокат Xiaomi',
-    desc_he: 'קורקינט חשמלי Xiaomi Mi Pro 2, מצב עובד, מספר שריטות קלות', desc_en: 'Xiaomi Mi Pro 2 electric scooter, working, minor scratches', desc_ru: 'Электросамокат Xiaomi Mi Pro 2, рабочий, небольшие царапины',
+    id: '12', name_he: 'קורקינט חשמלי Xiaomi', name_en: 'Xiaomi Electric Scooter', name_ru: 'Электросамокат Xiaomi',
+    desc_he: 'Xiaomi Mi Pro 2 — עובד מצוין — מספר שריטות קלות', desc_en: 'Xiaomi Mi Pro 2 — works great — minor scratches', desc_ru: 'Xiaomi Mi Pro 2 — отличная работа — небольшие царапины',
     price: '1200', original_price: '', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80',
     category: 'sport', type: 'secondhand', platform: '', link: '', condition: 'טוב', badge: '', active: 'TRUE'
   },
   {
-    id: '11', name_he: 'ספרי קוד Python + JavaScript', name_en: 'Python + JavaScript Books', name_ru: 'Книги Python + JavaScript',
-    desc_he: 'שלושה ספרי תכנות בעברית, כמעט ולא השתמשתי', desc_en: 'Three programming books in Hebrew, barely used', desc_ru: 'Три книги по программированию на иврите, почти не использовались',
+    id: '13', name_he: 'ספרי תכנות Python + JavaScript', name_en: 'Python + JavaScript Books', name_ru: 'Книги Python + JavaScript',
+    desc_he: 'שלושה ספרי תכנות בעברית — כמעט ולא השתמשתי', desc_en: 'Three programming books in Hebrew — barely used', desc_ru: 'Три книги по программированию на иврите — почти не использовались',
     price: '80', original_price: '', image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&q=80',
     category: 'books', type: 'secondhand', platform: '', link: '', condition: 'טוב', badge: '', active: 'TRUE'
-  },
-  {
-    id: '12', name_he: 'אוזניות Sony WH-1000XM4', name_en: 'Sony WH-1000XM4 Headphones', name_ru: 'Наушники Sony WH-1000XM4',
-    desc_he: 'אוזניות Sony פרמיום עם ביטול רעשים — הטובות בקטגוריה', desc_en: 'Sony premium headphones with noise cancellation — best in class', desc_ru: 'Премиум наушники Sony с шумоподавлением — лучшие в классе',
-    price: '799', original_price: '1299', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80',
-    category: 'tech', type: 'affiliate', platform: 'amazon', link: 'https://amazon.com', condition: '', badge: 'hot', active: 'TRUE'
   },
 ];
 
@@ -127,6 +133,19 @@ async function tryFetch(url) {
 }
 
 async function fetchProducts() {
+  // 0. reuse sessionStorage cache (set by any page in the same session)
+  try {
+    const cached = sessionStorage.getItem('pshpsh_products');
+    if (cached) {
+      const parsed = JSON.parse(cached);
+      if (Array.isArray(parsed) && parsed.length) {
+        allProducts = parsed;
+        applyFilters();
+        return;
+      }
+    }
+  } catch {}
+
   if (!SHEET_CSV_URL) {
     allProducts = DEMO_PRODUCTS;
     applyFilters();
@@ -151,6 +170,9 @@ async function fetchProducts() {
   } else {
     allProducts = DEMO_PRODUCTS;
   }
+
+  // Save to sessionStorage so product detail page can reuse it instantly
+  try { sessionStorage.setItem('pshpsh_products', JSON.stringify(allProducts)); } catch {}
 
   applyFilters();
 }

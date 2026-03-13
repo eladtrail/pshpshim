@@ -556,6 +556,17 @@ function renderProductPage(p, allProds) {
       </div>
     </section>`;
 
+  /* WhatsApp contact for secondhand — must be defined before buy-bar uses it */
+  window.waContact = () => {
+    const lang = currentLang || 'he';
+    const msgs = {
+      he: `היי! ראיתי את "${name}" בפשפשים ואני מעוניין/ת. אפשר לקבל פרטים? 🙏`,
+      en: `Hi! I saw "${name}" on פשפשים and I'm interested. Can I get more info? 🙏`,
+      ru: `Привет! Я видел "${name}" на פשפשים и заинтересован. Можно подробнее? 🙏`,
+    };
+    window.open(`https://wa.me/972547921821?text=${encodeURIComponent(msgs[lang]||msgs.he)}`, '_blank');
+  };
+
   /* Mobile bar */
   const buyBar = document.getElementById('buyBar');
   buyBar.style.display = 'flex';
@@ -567,21 +578,10 @@ function renderProductPage(p, allProds) {
     barBtn.textContent = 'קנה ›';
     barBtn.className = 'btn btn-primary';
   } else {
-    barBtn.onclick = waContact;
+    barBtn.onclick = window.waContact;
     barBtn.textContent = 'WhatsApp ›';
     barBtn.className = 'btn btn-whatsapp';
   }
-
-  /* WhatsApp contact for secondhand */
-  window.waContact = () => {
-    const lang = currentLang || 'he';
-    const msgs = {
-      he: `היי! ראיתי את "${name}" בפשפשים ואני מעוניין/ת. אפשר לקבל פרטים? 🙏`,
-      en: `Hi! I saw "${name}" on פשפשים and I'm interested. Can I get more info? 🙏`,
-      ru: `Привет! Я видел "${name}" на פשפשים и заинтересован. Можно подробнее? 🙏`,
-    };
-    window.open(`https://wa.me/972547921821?text=${encodeURIComponent(msgs[lang]||msgs.he)}`, '_blank');
-  };
 
   /* Re-init animations */
   document.querySelectorAll('.reveal').forEach(el => {
